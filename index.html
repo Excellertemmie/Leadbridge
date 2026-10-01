@@ -1020,6 +1020,38 @@
       .footer-grid { gap: 28px; }
     }
 
+    /* ===== Mobile-only (<=980px): close button, no touch hover effects, stacked cards ===== */
+    @media (max-width: 980px) {
+      body { overflow-x: clip; }
+      .mobile-menu .mobile-close { top: max(16px, env(safe-area-inset-top)); right: max(16px, env(safe-area-inset-right)); width: auto; min-width: 96px; min-height: 46px; padding: 0 22px; font-size: 14px; }
+
+      .stage:hover, .stage.active { transform: none; }
+
+      .services-grid, .portfolio-grid, .industry-cloud { display: block; border: 0; border-radius: 0; overflow: visible; }
+      .services-grid > *, .portfolio-grid > *, .industry-cloud > * { position: sticky; margin: 0 0 16px; box-shadow: 0 -14px 34px rgba(0,0,0,.55); }
+      :is(.services-grid, .portfolio-grid, .industry-cloud) > :nth-child(1) { top: 92px; z-index: 1; }
+      :is(.services-grid, .portfolio-grid, .industry-cloud) > :nth-child(2) { top: 103px; z-index: 2; }
+      :is(.services-grid, .portfolio-grid, .industry-cloud) > :nth-child(3) { top: 114px; z-index: 3; }
+      :is(.services-grid, .portfolio-grid, .industry-cloud) > :nth-child(4) { top: 125px; z-index: 4; }
+      :is(.services-grid, .portfolio-grid, .industry-cloud) > :nth-child(5) { top: 136px; z-index: 5; }
+      :is(.services-grid, .portfolio-grid, .industry-cloud) > :nth-child(6) { top: 147px; z-index: 6; }
+      :is(.services-grid, .portfolio-grid, .industry-cloud) > :nth-child(7) { top: 158px; z-index: 7; }
+      :is(.services-grid, .portfolio-grid, .industry-cloud) > :nth-child(8) { top: 169px; z-index: 8; }
+
+      .services-grid > .service-card { min-height: 250px; padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(180deg, #1a1a1a, #0e0e0e); }
+      .services-grid > .service-card:last-child { border-bottom: 1px solid var(--line); }
+      .portfolio-grid > .portfolio-card { min-height: 340px; background: #101010; }
+      .portfolio-card img { min-height: 340px; }
+      .industry-cloud > .industry-card { min-height: 92px; background: linear-gradient(145deg, #1d1d1d, #111); backdrop-filter: none; }
+    }
+    /* touch / narrow screens: no hover "lift" or zoom effects */
+    @media (max-width: 980px), (hover: none) {
+      .service-card:hover, .portfolio-card:hover, .industry-card:hover, .value-card:hover, .feature-tile:hover, .case-card:hover, .btn:hover { transform: none; }
+      .service-card:hover::before { transform: none; opacity: .12; }
+      .portfolio-card:hover img, .case-card:hover img, .photo-frame:hover img, .case-gallery figure:hover img { transform: none; }
+      .portfolio-card:hover img { opacity: .72; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; filter: none; }
@@ -1627,7 +1659,9 @@
     window.addEventListener("pointerleave", () => glow.style.opacity = "0");
 
     document.querySelectorAll(".tilt").forEach((card) => {
+      const noTilt = window.matchMedia("(max-width: 980px), (hover: none)");
       card.addEventListener("pointermove", (event) => {
+        if (noTilt.matches || event.pointerType === "touch") { card.style.transform = ""; return; }
         const rect = card.getBoundingClientRect();
         const x = (event.clientX - rect.left) / rect.width - .5;
         const y = (event.clientY - rect.top) / rect.height - .5;
