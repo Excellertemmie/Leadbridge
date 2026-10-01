@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leadbridge - B2B, B2C Digital Solution</title>
-  <meta name="description" content="Leadbridge designs, builds, and grows digital brands with conversion-focused websites, automation, SEO, GEO, and strategy." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#050505" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <title>Leadbridge - Design &amp; CRO Consultancy</title>
+  <meta name="description" content="Leadbridge is a design and CRO consultancy. I find where your website loses visitors, then redesign and test it so more of them become customers." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -992,6 +997,29 @@
       .project-hero-inner, .project-image, .project-details, .case-study-section { width: min(100%, calc(100vw - 36px)); }
     }
 
+    .brand { gap: 10px; }
+    .brand-logo { flex: none; display: block; }
+    .brand-word { font-family: var(--font-head); font-weight: 400; font-size: 30px; line-height: 1; color: var(--white); letter-spacing: 0; }
+    .brand-word em { color: var(--orange); font-style: italic; }
+    @media (max-width: 640px) { .brand-word { font-size: 26px; } .brand-logo { width: 38px; height: 29px; } }
+    /* mobile & touch refinements */
+    .nav { padding-left: max(5.5vw, env(safe-area-inset-left)); padding-right: max(5.5vw, env(safe-area-inset-right)); }
+    .mobile-menu { overflow-y: auto; padding: 96px 24px 40px; align-content: center; justify-items: center; text-align: center; }
+    @media (hover: none), (pointer: coarse) { .cursor-glow { display: none; } .stage:hover { transform: none; } .tilt { transform: none !important; } }
+    @media (max-width: 640px) {
+      .field input, .field select, .field textarea { font-size: 16px; }
+      .btn { white-space: normal; text-align: center; padding-block: 12px; }
+      .mobile-toggle { width: 48px; height: 48px; }
+      .testimonial-track { width: calc(100vw - 36px); scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+      .testimonial-card { flex: 0 0 min(300px, 84vw); min-height: 300px; padding: 26px 22px; scroll-snap-align: start; }
+      .stage h4 { font-size: 30px; }
+      .process-visual img { min-height: 260px; }
+      .faq-q { min-height: 64px; padding: 0 16px; font-size: 15px; }
+      .logo-pill { min-width: 120px; font-size: 17px; }
+      .form { padding: 22px 18px; }
+      .footer-grid { gap: 28px; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; filter: none; }
@@ -1003,8 +1031,8 @@
 
   <nav class="nav" id="nav">
     <a class="brand" href="#home" aria-label="Leadbridge home">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span>Leadbridge</span>
+      <svg class="brand-logo" viewBox="0 0 64 48" width="44" height="33" aria-hidden="true"><path d="M8 34C8 20 18 10 32 10s24 10 24 24" fill="none" stroke="#FF7300" stroke-width="7" stroke-linecap="round"/><path d="M4 41h56" stroke="#fffaf2" stroke-width="6" stroke-linecap="round"/></svg>
+      <strong class="brand-word">Lead<em>bridge</em></strong>
     </a>
     <div class="nav-links" aria-label="Main navigation">
       <a href="#home" class="active">Home</a>
@@ -1015,7 +1043,7 @@
       <a href="#contact">Contact</a>
     </div>
     <a class="btn btn-primary" href="#contact">Get In Touch</a>
-    <button class="mobile-toggle" type="button" onclick="openMobileMenu()" aria-label="Open menu">=</button>
+    <button class="mobile-toggle" type="button" onclick="openMobileMenu()" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
@@ -1036,14 +1064,14 @@
         <img src="https://framerusercontent.com/images/w8s17EhZCy1HskMXDn2rLsloPg.png" alt="" />
       </div>
       <div class="hero-inner">
-        <div class="eyebrow">Top rated consulting agency</div>
-        <h1 aria-label="Build the business you actually want, not the one draining you.">
-          <span class="split-line no-break" style="--i:1">Build the business you actually want,</span>
-          <em class="split-line" style="--i:3">not the one draining you.</em>
+        <div class="eyebrow">Design &amp; CRO consultancy</div>
+        <h1 aria-label="Turn more of your visitors into paying customers.">
+          <span class="split-line no-break" style="--i:1">Turn more of your visitors</span>
+          <em class="split-line" style="--i:3">into paying customers.</em>
         </h1>
-        <p class="hero-copy">I design, build, and grow digital brands from the ground up. Whether you need a site that converts, a brand people trust, or a strategy that brings in consistent revenue, that's what I do.</p>
+        <p class="hero-copy">I'm a design and conversion rate optimization (CRO) consultant. I find where your website loses visitors, then redesign and test the pages so more of them book, buy, or enquire.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Contact Me Now</a>
+          <a class="btn btn-primary" href="#contact">Book a Discovery Call</a>
           <a class="btn btn-secondary" href="#services">What I Offer</a>
         </div>
         <div class="leaders" aria-label="Working with leaders">
@@ -1065,7 +1093,7 @@
         <div>
           <p class="section-label reveal">About Leadbridge</p>
           <h2 class="section-title reveal" style="--d:80ms">Building Stronger Brands, <span>and sustainable results.</span></h2>
-          <p class="section-copy reveal" style="--d:140ms">I specialize in empowering B2B and B2C companies with result-driven solutions tailored to modern business challenges, from launch strategy to conversion systems.</p>
+          <p class="section-copy reveal" style="--d:140ms">I help B2B and B2C companies turn their websites into conversion systems, combining UX design with CRO research, testing, and clear measurement.</p>
           <div class="check-list">
             <div class="check-item reveal" style="--d:180ms"><div class="check-icon">1</div><div><h4>Revenue Systems</h4><p>From zero to measurable revenue with websites, funnels, and campaigns that connect.</p></div></div>
             <div class="check-item reveal" style="--d:230ms"><div class="check-icon">2</div><div><h4>Aligned Solutions</h4><p>Design, strategy, and automation mapped to your goals instead of random digital activity.</p></div></div>
@@ -1124,14 +1152,14 @@
         <div class="section-top">
           <div>
             <p class="section-label reveal">Services</p>
-            <h2 class="section-title reveal">Unlimited Design Features <span>Delivered In A Second.</span></h2>
+            <h2 class="section-title reveal">Design That Looks Right, <span>CRO That Makes It Pay.</span></h2>
           </div>
           <p class="section-copy reveal">Everything needed to turn your digital presence into a serious growth engine.</p>
         </div>
         <div class="services-grid">
           <article class="service-card reveal" style="--d:0ms"><div class="service-number">01</div><div class="service-body"><h3 class="service-title">UI/UX Design</h3><p>Interfaces that feel premium, intuitive, and conversion-focused across every screen.</p><ul><li>Website systems</li><li>Landing pages</li><li>Product experiences</li></ul></div></article>
           <article class="service-card reveal" style="--d:90ms"><div class="service-number">02</div><div class="service-body"><h3 class="service-title">Web Development</h3><p>Fast, responsive, clean pages built to perform and support your business goals.</p><ul><li>Framer-style builds</li><li>Responsive code</li><li>Launch support</li></ul></div></article>
-          <article class="service-card reveal" style="--d:180ms"><div class="service-number">03</div><div class="service-body"><h3 class="service-title">Email Marketing</h3><p>Retention systems, campaigns, and sequences that keep customers moving forward.</p><ul><li>Welcome flows</li><li>Lifecycle campaigns</li><li>Automation strategy</li></ul></div></article>
+          <article class="service-card reveal" style="--d:180ms"><div class="service-number">03</div><div class="service-body"><h3 class="service-title">CRO Audits &amp; Testing</h3><p>Find the friction that costs you customers, then fix it with tested changes instead of guesses.</p><ul><li>Conversion audits</li><li>A/B test strategy</li><li>Analytics &amp; funnel review</li></ul></div></article>
           <article class="service-card reveal" style="--d:270ms"><div class="service-number">04</div><div class="service-body"><h3 class="service-title">SEO / GEO</h3><p>Content and visibility strategy shaped for search, AI discovery, and qualified demand.</p><ul><li>Keyword strategy</li><li>AI-search readiness</li><li>Conversion content</li></ul></div></article>
         </div>
       </div>
@@ -1296,7 +1324,7 @@
               <div class="field"><label for="lastName">Last Name</label><input id="lastName" type="text" placeholder="Smith" required /></div>
             </div>
             <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="john@company.com" required /></div>
-            <div class="field"><label for="service">Service</label><select id="service"><option>UI/UX Design</option><option>Web Development</option><option>Email Marketing</option><option>SEO / GEO</option><option>Full Digital Strategy</option></select></div>
+            <div class="field"><label for="service">Service</label><select id="service"><option>UI/UX Design</option><option>Web Development</option><option>CRO Audit &amp; Testing</option><option>SEO / GEO</option><option>Full Digital Strategy</option></select></div>
             <div class="field"><label for="message">Message</label><textarea id="message" placeholder="Tell me about your project, goals, and timeline..." required></textarea></div>
             <button class="btn btn-primary" type="submit" style="width:100%">Send Message</button>
           </form>
@@ -1306,10 +1334,10 @@
 
     <div class="cta-band">
       <div class="cta-inner">
-        <p class="section-label">Join Us Now</p>
+        <p class="section-label">Get Started</p>
         <div>
-          <h2>Each Project, Our <span>Design is Great.</span></h2>
-          <p>Ready to take the next step? Join us now and start transforming your vision into reality with expert support.</p>
+          <h2>Ready To Convert <span>More Of Your Traffic?</span></h2>
+          <p>Book a discovery call and we will pinpoint where your site is losing customers and what to fix first.</p>
         </div>
         <a class="btn btn-primary" href="#contact">Book an Appointment</a>
       </div>
@@ -1317,7 +1345,7 @@
 
     <aside class="project-page" id="projectPage" aria-hidden="true">
       <div class="project-nav">
-        <a class="brand" href="#portfolio" onclick="closeProjectPage(event)"><span class="brand-mark" aria-hidden="true"></span><span>Portfolio</span></a>
+        <a class="brand" href="#portfolio" onclick="closeProjectPage(event)"><svg class="brand-logo" viewBox="0 0 64 48" width="44" height="33" aria-hidden="true"><path d="M8 34C8 20 18 10 32 10s24 10 24 24" fill="none" stroke="#FF7300" stroke-width="7" stroke-linecap="round"/><path d="M4 41h56" stroke="#fffaf2" stroke-width="6" stroke-linecap="round"/></svg><span>Portfolio</span></a>
         <button class="btn btn-primary" type="button" onclick="closeProjectPage(event)">Back to Portfolio</button>
       </div>
       <div class="project-hero">
@@ -1366,11 +1394,11 @@
   <footer>
     <div class="footer-grid">
       <div>
-        <a class="brand" href="#home"><span class="brand-mark" aria-hidden="true"></span><span>Leadbridge</span></a>
+        <a class="brand" href="#home"><svg class="brand-logo" viewBox="0 0 64 48" width="44" height="33" aria-hidden="true"><path d="M8 34C8 20 18 10 32 10s24 10 24 24" fill="none" stroke="#FF7300" stroke-width="7" stroke-linecap="round"/><path d="M4 41h56" stroke="#fffaf2" stroke-width="6" stroke-linecap="round"/></svg><strong class="brand-word">Lead<em>bridge</em></strong></a>
         <p style="margin-top:18px;max-width:360px">Made remotely with care and precision. Building stronger brands and sustainable results for B2B and B2C businesses worldwide.</p>
       </div>
       <div><h4>Pages</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#contact">Contact</a></li></ul></div>
-      <div><h4>Services</h4><ul><li><a href="#services">UI/UX Design</a></li><li><a href="#services">Email Marketing</a></li><li><a href="#services">SEO / GEO</a></li><li><a href="#services">Web Development</a></li></ul></div>
+      <div><h4>Services</h4><ul><li><a href="#services">UI/UX Design</a></li><li><a href="#services">CRO Audits &amp; Testing</a></li><li><a href="#services">SEO / GEO</a></li><li><a href="#services">Web Development</a></li></ul></div>
       <div><h4>Social</h4><ul><li><a href="https://x.com" target="_blank">Twitter (X)</a></li><li><a href="https://instagram.com" target="_blank">Instagram</a></li><li><a href="https://youtube.com" target="_blank">Youtube</a></li><li><a href="https://framer.com" target="_blank">Framer</a></li></ul></div>
     </div>
     <div class="footer-bottom">
@@ -1551,8 +1579,8 @@
     window.addEventListener("hashchange", routeProject);
     routeProject();
 
-    function openMobileMenu() { document.getElementById("mobileMenu").classList.add("open"); document.body.style.overflow = "hidden"; }
-    function closeMobileMenu() { document.getElementById("mobileMenu").classList.remove("open"); document.body.style.overflow = ""; }
+    function openMobileMenu() { document.getElementById("mobileMenu").classList.add("open"); document.body.style.overflow = "hidden"; document.querySelector(".mobile-toggle").setAttribute("aria-expanded","true"); }
+    function closeMobileMenu() { document.getElementById("mobileMenu").classList.remove("open"); document.body.style.overflow = ""; document.querySelector(".mobile-toggle").setAttribute("aria-expanded","false"); }
 
     const processImgs = [
       "https://framerusercontent.com/images/Qnjbg5sx80zqC8P7TMF9g3DgCA.jpeg",
