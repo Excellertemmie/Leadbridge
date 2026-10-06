@@ -831,33 +831,51 @@
     .impact-card strong { display: block; font-family: var(--font-head); font-size: 52px; line-height: .9; color: var(--orange); font-weight: 400; }
     .impact-card span { display: block; color: var(--soft); font-size: 13px; font-weight: 800; margin-top: 10px; }
 
-    .faq-wrap { display: grid; grid-template-columns: .75fr 1fr; gap: 42px; align-items: start; }
-    .faq-list { display: grid; gap: 12px; }
-    .faq-item {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.045);
-      overflow: hidden;
+    .faq-wrap { display: block; }
+    .faq-head { max-width: 680px; margin: 0 auto 44px; text-align: center; }
+    .faq-head .section-copy { margin-inline: auto; }
+    .faq-panel {
+      max-width: 1000px; margin: 0 auto; padding: 14px;
+      display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 14px;
+      border: 1px solid var(--line); border-radius: 26px;
+      background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.02));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 40px 100px rgba(0,0,0,.4);
     }
+    .faq-col { min-height: 400px; padding: 20px; border: 1px solid rgba(255,255,255,.06); border-radius: 18px; background: rgba(255,255,255,.035); }
+    .faq-col-title { margin: 0 0 14px; color: var(--white); font-family: inherit; font-size: 13px; font-weight: 700; letter-spacing: .02em; }
+    .faq-list { display: grid; gap: 4px; }
+    .faq-item { border: 0; background: none; overflow: visible; }
     .faq-q {
-      width: 100%;
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 0 22px;
-      color: var(--white);
-      background: transparent;
-      border: 0;
-      cursor: pointer;
-      text-align: left;
-      font-weight: 800;
+      width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      padding: 13px 14px; border: 0; border-radius: 12px; background: transparent;
+      color: var(--muted); font-size: 14.5px; font-weight: 500; line-height: 1.4; text-align: left; cursor: pointer;
+      transition: background .2s ease, color .2s ease;
     }
-    .faq-icon { width: 32px; height: 32px; display: grid; place-items: center; flex: 0 0 auto; border-radius: var(--radius); background: var(--orange); color: var(--ink); font-weight: 900; transition: transform .25s ease; }
-    .faq-a { max-height: 0; overflow: hidden; color: var(--muted); padding: 0 22px; transition: max-height .32s ease, padding .32s ease; }
-    .faq-item.open .faq-a { max-height: 180px; padding: 0 22px 22px; }
-    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-q:hover { background: rgba(255,255,255,.05); color: var(--white); }
+    .faq-item.active .faq-q, .faq-item.open .faq-q { background: rgba(255,255,255,.09); color: var(--white); }
+    .faq-icon { display: none; width: 22px; height: 22px; flex: none; place-items: center; color: var(--orange); font-size: 20px; font-weight: 500; transition: transform .25s ease; }
+    .faq-a { display: none; }
+    .faq-chat { display: grid; gap: 14px; align-content: start; }
+    .faq-user { justify-self: end; max-width: 88%; padding: 11px 16px; border-radius: 16px 16px 4px 16px; background: rgba(255,255,255,.09); color: var(--white); font-size: 14px; animation: faqIn .35s ease both; }
+    .faq-bot { padding: 16px 18px; border: 1px solid rgba(255,255,255,.08); border-radius: 16px 16px 16px 4px; background: rgba(255,255,255,.035); color: var(--soft); font-size: 15px; line-height: 1.7; min-height: 56px; animation: faqIn .35s .08s ease both; }
+    .faq-typing { display: inline-flex; gap: 5px; align-items: center; height: 24px; }
+    .faq-typing i { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: faqDot 1s ease-in-out infinite; }
+    .faq-typing i:nth-child(2) { animation-delay: .15s; } .faq-typing i:nth-child(3) { animation-delay: .3s; }
+    @keyframes faqIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @keyframes faqDot { 0%, 80%, 100% { opacity: .25; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-4px); } }
+    @media (max-width: 980px) {
+      .faq-head { margin-bottom: 28px; }
+      .faq-panel { display: block; padding: 8px; border-radius: 20px; }
+      .faq-answer { display: none; }
+      .faq-col { min-height: 0; padding: 10px; }
+      .faq-col-title { padding: 6px 8px 0; }
+      .faq-icon { display: grid; }
+      .faq-q { min-height: 56px; font-size: 15px; }
+      .faq-a { display: block; max-height: 0; overflow: hidden; padding: 0 14px; color: var(--muted); font-size: 14.5px; line-height: 1.65; transition: max-height .32s ease, padding .32s ease; }
+      .faq-item.open .faq-a { max-height: 320px; padding: 6px 14px 16px; }
+      .faq-item.open .faq-icon { transform: rotate(45deg); }
+    }
+    @media (prefers-reduced-motion: reduce) { .faq-user, .faq-bot { animation: none; } .faq-typing i { animation: none; opacity: .6; } }
 
     .contact-grid {
       display: grid;
@@ -1033,7 +1051,6 @@
       .testimonial-card { flex: 0 0 min(300px, 84vw); min-height: 300px; padding: 26px 22px; scroll-snap-align: start; }
       .stage h4 { font-size: 30px; }
       .process-visual img { min-height: 260px; }
-      .faq-q { min-height: 64px; padding: 0 16px; font-size: 15px; }
       .logo-pill { min-width: 120px; font-size: 17px; }
       .form { padding: 22px 18px; }
       .footer-grid { gap: 28px; }
@@ -1077,6 +1094,28 @@
       .hero-media::after { background: linear-gradient(180deg, rgba(5,5,5,.42) 0%, rgba(5,5,5,.5) 50%, rgba(5,5,5,.88) 88%, var(--black) 100%); }
       .hero h1, .hero-copy { text-shadow: 0 2px 22px rgba(0,0,0,.65); }
     }
+
+    /* ===== Premium polish: scroll reveal, split titles, CTA, giant footer name, hover ===== */
+    .reveal { transform: translateY(56px) scale(.985); filter: blur(14px); transition-duration: 1s, 1.05s, 1s; }
+    .split-title.reveal { opacity: 1; transform: none; filter: none; }
+    .split-title .w { display: inline-block; color: inherit; font-style: inherit; opacity: 0; filter: blur(12px); transform: translateY(.4em); transition: opacity .8s ease, filter .8s ease, transform .9s cubic-bezier(.16,.84,.24,1); transition-delay: calc(var(--i) * 60ms); }
+    .split-title.visible .w { opacity: 1; filter: blur(0); transform: none; }
+    .cta-mark { display: grid; place-items: center; width: 76px; height: 76px; margin-bottom: 6px; border-radius: 22px; border: 1px solid rgba(255,255,255,.14); background: linear-gradient(160deg, rgba(255,115,0,.26), #0f0f0f 70%); box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 0 70px rgba(255,115,0,.3); }
+    .cta-note { color: var(--dim); font-size: 13px; letter-spacing: .02em; }
+    .footer-giant { width: min(var(--max), calc(100vw - 44px)); margin: 28px auto 0; padding-bottom: .06em; overflow: hidden; text-align: center; white-space: nowrap; font-family: var(--font-head); font-size: clamp(54px, 18vw, 270px); line-height: .84; letter-spacing: -.02em; background: linear-gradient(180deg, rgba(255,205,160,.26) 0%, rgba(255,115,0,.08) 58%, transparent 96%); -webkit-background-clip: text; background-clip: text; color: transparent; user-select: none; pointer-events: none; }
+    .footer-giant em { font-style: italic; }
+    .btn { transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .3s ease, background .3s ease, box-shadow .35s ease; }
+    .btn:active { transform: translateY(0) scale(.98); }
+    .btn-primary { box-shadow: 0 10px 34px rgba(255,115,0,.22), inset 0 1px 0 rgba(255,255,255,.22); }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid rgba(255,138,31,.9); outline-offset: 3px; }
+    footer a { transition: color .25s ease; }
+    @media (hover: hover) and (min-width: 981px) {
+      .service-card, .portfolio-card, .value-card, .feature-tile, .case-card, .industry-card { transition: transform .45s cubic-bezier(.2,.8,.2,1), border-color .35s ease, box-shadow .45s ease, background .35s ease; }
+      .service-card:hover, .value-card:hover, .feature-tile:hover, .portfolio-card:hover, .case-card:hover { box-shadow: 0 30px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(255,115,0,.18), 0 0 60px rgba(255,115,0,.1); }
+      footer a:hover { color: var(--white); }
+    }
+    @media (max-width: 640px) { .reveal { transform: translateY(40px) scale(.99); } .cta-mark { width: 64px; height: 64px; border-radius: 18px; } }
+    @media (prefers-reduced-motion: reduce) { .split-title .w { opacity: 1; filter: none; transform: none; transition: none; } }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
@@ -1349,17 +1388,26 @@
 
     <section id="faq">
       <div class="container faq-wrap">
-        <div>
+        <div class="faq-head">
           <p class="section-label reveal">FAQ</p>
           <h2 class="section-title reveal">Frequently <span>Asked Questions.</span></h2>
           <p class="section-copy reveal">Quick answers to the most common questions before we start building.</p>
         </div>
-        <div class="faq-list reveal">
-          <div class="faq-item open"><button class="faq-q" onclick="toggleFaq(this)">What do I need to get started?<span class="faq-icon">+</span></button><div class="faq-a">Reach out through the contact form and we will schedule a 15-minute discovery call to understand your goals, audience, timeline, and next best move.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What kind of customization is available?<span class="faq-icon">+</span></button><div class="faq-a">Every project is shaped around your brand, including colors, typography, layout, content, interaction style, and conversion goals.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How easy is it to edit for beginners?<span class="faq-icon">+</span></button><div class="faq-a">Depending on the platform, I set up simple structures and provide documentation so you can update content without touching code.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I need to know how to code?<span class="faq-icon">+</span></button><div class="faq-a">No. I handle the technical side, including design, development, deployment, and launch preparation.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What will I get after the project?<span class="faq-icon">+</span></button><div class="faq-a">You receive project files, documentation, walkthrough support, and a clear handoff so the site is usable after launch.</div></div>
+        <div class="faq-panel reveal">
+          <div class="faq-col faq-questions">
+            <h3 class="faq-col-title">Questions</h3>
+            <div class="faq-list">
+            <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">What do I need to get started?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a">Reach out through the contact form and we will schedule a 15-minute discovery call to understand your goals, audience, timeline, and next best move.</div></div>
+            <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">What kind of customization is available?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a">Every project is shaped around your brand, including colors, typography, layout, content, interaction style, and conversion goals.</div></div>
+            <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">How easy is it to edit for beginners?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a">Depending on the platform, I set up simple structures and provide documentation so you can update content without touching code.</div></div>
+            <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">Do I need to know how to code?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a">No. I handle the technical side, including design, development, deployment, and launch preparation.</div></div>
+            <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">What will I get after the project?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a">You receive project files, documentation, walkthrough support, and a clear handoff so the site is usable after launch.</div></div>
+            </div>
+          </div>
+          <div class="faq-col faq-answer">
+            <h3 class="faq-col-title">Answer</h3>
+            <div class="faq-chat" id="faqChat" aria-live="polite"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -1396,12 +1444,11 @@
 
     <div class="cta-band">
       <div class="cta-inner">
-        <p class="section-label">Get Started</p>
-        <div>
-          <h2>Ready To Convert <span>More Of Your Traffic?</span></h2>
-          <p>Book a discovery call and we will pinpoint where your site is losing customers and what to fix first.</p>
-        </div>
-        <a class="btn btn-primary" href="#contact">Book an Appointment</a>
+        <div class="cta-mark reveal"><svg viewBox="0 0 64 48" width="40" height="30" aria-hidden="true"><path d="M8 34C8 20 18 10 32 10s24 10 24 24" fill="none" stroke="#FF7300" stroke-width="7" stroke-linecap="round"/><path d="M4 41h56" stroke="#fffaf2" stroke-width="6" stroke-linecap="round"/></svg></div>
+        <h2 class="reveal">Stop guessing. <span>Start converting.</span></h2>
+        <p class="reveal" style="--d:100ms">Book a discovery call and we'll pinpoint where your site is losing customers and what to fix first.</p>
+        <a class="btn btn-primary reveal" style="--d:180ms" href="#contact">Book a Discovery Call</a>
+        <small class="cta-note reveal" style="--d:240ms">Replies within 24 hours</small>
       </div>
     </div>
 
@@ -1467,12 +1514,32 @@
       <p>Copyright 2026 Leadbridge. All rights reserved.</p>
       <p>Terms & Conditions · Privacy Policy</p>
     </div>
+    <div class="footer-giant" aria-hidden="true">Lead<em>bridge</em></div>
   </footer>
 
   <script>
     document.documentElement.scrollLeft = 0;
     document.body.scrollLeft = 0;
 
+    document.querySelectorAll(".section-title").forEach((h) => {
+      let i = 0;
+      h.classList.add("split-title");
+      (function walk(n) {
+        [...n.childNodes].forEach((c) => {
+          if (c.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            c.textContent.split(/(\s+)/).forEach((t) => {
+              if (!t) return;
+              if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(t)); return; }
+              const w = document.createElement("span");
+              w.className = "w"; w.style.setProperty("--i", i++); w.textContent = t;
+              frag.appendChild(w);
+            });
+            c.replaceWith(frag);
+          } else if (c.nodeType === 1) walk(c);
+        });
+      })(h);
+    });
     const revealEls = document.querySelectorAll(".reveal");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, index) => {
@@ -1662,9 +1729,71 @@
       }, 190);
     }
 
-    function toggleFaq(btn) {
-      btn.closest(".faq-item").classList.toggle("open");
-    }
+    (function () {
+      const panel = document.querySelector(".faq-panel");
+      const chat = document.getElementById("faqChat");
+      if (!panel || !chat) return;
+      const items = [...panel.querySelectorAll(".faq-item")];
+      const desk = window.matchMedia("(min-width: 981px)");
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      let timer = null, run = 0, current = items[0];
+
+      function setExpanded(active, cls) {
+        items.forEach((it) => {
+          const on = it === active;
+          it.classList.toggle(cls, on);
+          it.querySelector(".faq-q").setAttribute("aria-expanded", String(on));
+        });
+      }
+      function show(item) {
+        current = item;
+        setExpanded(item, "active");
+        const q = item.querySelector(".faq-q").childNodes[0].textContent.trim();
+        const a = item.querySelector(".faq-a").textContent.trim();
+        const id = ++run;
+        clearTimeout(timer);
+        chat.innerHTML = '<div class="faq-user"></div><div class="faq-bot"><span class="faq-typing"><i></i><i></i><i></i></span></div>';
+        chat.querySelector(".faq-user").textContent = q;
+        const bot = chat.querySelector(".faq-bot");
+        if (reduce.matches) { bot.textContent = a; return; }
+        timer = setTimeout(function () {
+          if (id !== run) return;
+          const words = a.split(" ");
+          let n = 0;
+          bot.textContent = "";
+          (function step() {
+            if (id !== run) return;
+            n = Math.min(words.length, n + 2);
+            bot.textContent = words.slice(0, n).join(" ");
+            if (n < words.length) timer = setTimeout(step, 28);
+          })();
+        }, 520);
+      }
+      items.forEach((it) => {
+        it.querySelector(".faq-q").addEventListener("click", function () {
+          if (desk.matches) { if (it !== current || !chat.children.length) show(it); return; }
+          const wasOpen = it.classList.contains("open");
+          setExpanded(wasOpen ? null : it, "open");
+        });
+      });
+      let started = false;
+      function start() {
+        started = true;
+        if (desk.matches) show(current); else setExpanded(current, "open");
+      }
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting && !started) { start(); io.disconnect(); }
+        }, { threshold: 0.25 });
+        io.observe(panel);
+      } else { start(); }
+      desk.addEventListener("change", function () {
+        if (!started) return;
+        run++; clearTimeout(timer);
+        items.forEach((it) => it.classList.remove("open", "active"));
+        if (desk.matches) show(current); else setExpanded(current, "open");
+      });
+    })();
 
     function submitForm(event) {
       event.preventDefault();
