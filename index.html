@@ -1045,6 +1045,14 @@
       .portfolio-card:hover img { opacity: .72; }
     }
 
+    /* mobile hero: make the background image actually visible */
+    @media (max-width: 640px) {
+      .hero-media { --hero-focus: 50% 50%; } /* change to e.g. 30% 50% or 70% 50% to move the focus left/right */
+      .hero-media img { opacity: .92; filter: none; object-position: var(--hero-focus); }
+      .hero-media::after { background: linear-gradient(180deg, rgba(5,5,5,.42) 0%, rgba(5,5,5,.5) 50%, rgba(5,5,5,.88) 88%, var(--black) 100%); }
+      .hero h1, .hero-copy { text-shadow: 0 2px 22px rgba(0,0,0,.65); }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; filter: none; }
