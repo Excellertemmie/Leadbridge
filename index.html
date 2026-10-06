@@ -456,31 +456,38 @@
     .stat-badge strong { display: block; font-family: var(--font-head); font-size: 52px; line-height: .8; color: var(--orange); font-weight: 400; }
     .stat-badge span { color: var(--soft); font-size: 12px; font-weight: 800; text-transform: uppercase; }
 
-    .check-list { display: grid; gap: 16px; margin-top: 28px; }
+    #about .section-title { margin-bottom: 22px; }
+    .check-list { display: grid; gap: 14px; margin-top: 34px; }
     .check-item {
-      display: grid;
-      grid-template-columns: 38px 1fr;
-      gap: 14px;
-      align-items: start;
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.04);
+      --mx: 50%; --my: 50%;
+      position: relative; overflow: hidden; display: grid; grid-template-columns: 56px 1fr; gap: 18px; align-items: start;
+      padding: 22px 24px; border: 1px solid var(--line); border-radius: 20px;
+      background: linear-gradient(145deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 18px 44px rgba(0,0,0,.22);
+      transition: border-color .4s ease, box-shadow .4s ease, transform .5s cubic-bezier(.2,.8,.2,1);
     }
-
-    .check-icon {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      border-radius: var(--radius);
-      background: var(--orange);
-      color: var(--ink);
-      font-weight: 900;
+    .check-item::before { content: ""; position: absolute; inset: 0; opacity: 0; pointer-events: none; background: radial-gradient(360px circle at var(--mx) var(--my), rgba(255,115,0,.16), transparent 62%); transition: opacity .4s ease; }
+    .check-item > * { position: relative; }
+    .check-icon { width: 56px; height: 56px; display: grid; place-items: center; border-radius: 16px; color: #fffaf2; background: linear-gradient(160deg, rgba(255,115,0,.18), rgba(255,255,255,.04) 58%), #0f0f0f; border: 1px solid rgba(255,255,255,.12); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 12px 28px rgba(0,0,0,.45); transition: border-color .4s ease, box-shadow .4s ease; }
+    .check-icon svg { width: 27px; height: 27px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .check-icon svg .a { stroke: #ff7300; }
+    .check-no { position: absolute; top: 14px; right: 20px; font-family: var(--font-head); font-size: 54px; line-height: 1; color: rgba(255,255,255,.06); font-style: italic; pointer-events: none; }
+    .check-item h4 { font-size: 25px; margin-bottom: 5px; }
+    .check-item p { color: var(--muted); font-size: 14.5px; line-height: 1.65; }
+    .check-item.lit .check-icon { border-color: rgba(255,115,0,.5); box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 0 0 4px rgba(255,115,0,.07), 0 12px 32px rgba(255,115,0,.2); }
+    @media (hover: hover) and (min-width: 981px) {
+      .check-item:hover { border-color: rgba(255,115,0,.32); transform: translateX(6px); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 26px 64px rgba(0,0,0,.4); }
+      .check-item:hover::before { opacity: 1; }
     }
-
-    .check-item h4 { font-size: 24px; margin-bottom: 4px; }
-    .check-item p { color: var(--muted); font-size: 14px; }
+    .about-grid { align-items: start; }
+    .photo-frame { position: sticky; top: 108px; border-radius: 28px; }
+    .photo-frame::before { inset: 10px; border-radius: 20px; }
+    .photo-frame::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(5,5,5,.05) 40%, rgba(5,5,5,.65) 100%); }
+    .photo-frame img { aspect-ratio: 4 / 4.7; transform: translate3d(0, var(--py, 0px), 0) scale(1.12); transition: none; }
+    .photo-frame:hover img { transform: translate3d(0, var(--py, 0px), 0) scale(1.12); }
+    .photo-tag { position: absolute; top: 22px; right: 22px; z-index: 2; padding: 8px 14px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; background: rgba(10,10,10,.45); backdrop-filter: blur(14px); color: var(--white); font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .stat-badge { z-index: 3; border-radius: 18px; }
+    @media (max-width: 980px) { .photo-frame { position: relative; top: 0; border-radius: 22px; } .photo-frame img { aspect-ratio: 4 / 3.6; transform: none !important; } .check-item { padding: 18px; grid-template-columns: 48px 1fr; gap: 14px; } .check-icon { width: 48px; height: 48px; border-radius: 14px; } .check-no { font-size: 44px; right: 14px; } .check-item h4 { font-size: 22px; } }
 
     .results { overflow: hidden; background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,115,0,.04)); border-block: 1px solid var(--line); }
     .case-track { display: flex; gap: 22px; width: max-content; animation: caseMarquee 34s linear infinite; }
@@ -1210,18 +1217,19 @@
 
     <section id="about">
       <div class="container about-grid">
-        <div class="photo-frame reveal tilt">
+        <div class="photo-frame reveal">
           <img src="https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=1100&q=85" alt="Happy person smiling" />
-          <div class="stat-badge"><strong>10+</strong><span>Businesses rated</span></div>
+          <div class="photo-tag">Design + CRO</div>
+          <div class="stat-badge"><strong data-count="10" data-suffix="+">10+</strong><span>Businesses rated</span></div>
         </div>
         <div>
           <p class="section-label reveal">About Leadbridge</p>
           <h2 class="section-title reveal" style="--d:80ms">Building Stronger Brands, <span>and sustainable results.</span></h2>
           <p class="section-copy reveal" style="--d:140ms">I help B2B and B2C companies turn their websites into conversion systems, combining UX design with CRO research, testing, and clear measurement.</p>
           <div class="check-list">
-            <div class="check-item reveal" style="--d:180ms"><div class="check-icon">1</div><div><h4>Revenue Systems</h4><p>From zero to measurable revenue with websites, funnels, and campaigns that connect.</p></div></div>
-            <div class="check-item reveal" style="--d:230ms"><div class="check-icon">2</div><div><h4>Aligned Solutions</h4><p>Design, strategy, and automation mapped to your goals instead of random digital activity.</p></div></div>
-            <div class="check-item reveal" style="--d:280ms"><div class="check-icon">3</div><div><h4>Long-Term Growth</h4><p>Business frameworks built for retention, visibility, and sustainable results after launch.</p></div></div>
+            <div class="check-item reveal" style="--d:180ms"><div class="check-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7"/><path class="a" d="M15 8h5v5"/></svg></div><span class="check-no" aria-hidden="true">01</span><div><h4>Revenue Systems</h4><p>From zero to measurable revenue with websites, funnels, and campaigns that connect.</p></div></div>
+            <div class="check-item reveal" style="--d:230ms"><div class="check-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle class="a" cx="12" cy="12" r="1" fill="#ff7300"/></svg></div><span class="check-no" aria-hidden="true">02</span><div><h4>Aligned Solutions</h4><p>Design, strategy, and automation mapped to your goals instead of random digital activity.</p></div></div>
+            <div class="check-item reveal" style="--d:280ms"><div class="check-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path class="a" d="m3 12.5 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></div><span class="check-no" aria-hidden="true">03</span><div><h4>Long-Term Growth</h4><p>Business frameworks built for retention, visibility, and sustainable results after launch.</p></div></div>
           </div>
         </div>
       </div>
@@ -1540,6 +1548,47 @@
         });
       })(h);
     });
+    (function aboutFx() {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const fine = window.matchMedia("(hover: hover) and (min-width: 981px)");
+      document.querySelectorAll("[data-count]").forEach((el) => {
+        const end = +el.dataset.count, suf = el.dataset.suffix || "";
+        if (reduce || !("IntersectionObserver" in window)) return;
+        el.textContent = "0" + suf;
+        const io = new IntersectionObserver((e) => {
+          if (!e[0].isIntersecting) return;
+          io.disconnect();
+          const t0 = performance.now();
+          (function f(t) { const k = Math.min(1, (t - t0) / 1400); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))) + suf; if (k < 1) requestAnimationFrame(f); })(t0);
+        }, { threshold: 0.6 });
+        io.observe(el);
+      });
+      document.querySelectorAll(".check-item").forEach((it) => {
+        it.addEventListener("pointermove", (e) => {
+          if (!fine.matches) return;
+          const r = it.getBoundingClientRect();
+          it.style.setProperty("--mx", (e.clientX - r.left) + "px");
+          it.style.setProperty("--my", (e.clientY - r.top) + "px");
+        });
+      });
+      if ("IntersectionObserver" in window) {
+        const lit = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle("lit", e.isIntersecting)), { rootMargin: "-38% 0px -38% 0px" });
+        document.querySelectorAll(".check-item").forEach((it) => lit.observe(it));
+      }
+      const img = document.querySelector(".photo-frame img");
+      if (img && !reduce) {
+        let tick = false;
+        const upd = () => {
+          tick = false;
+          if (!fine.matches) { img.style.removeProperty("--py"); return; }
+          const r = img.parentElement.getBoundingClientRect();
+          const p = Math.max(-1, Math.min(1, (r.top + r.height / 2 - innerHeight / 2) / innerHeight));
+          img.style.setProperty("--py", (p * -26) + "px");
+        };
+        addEventListener("scroll", () => { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true });
+        upd();
+      }
+    })();
     const revealEls = document.querySelectorAll(".reveal");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, index) => {
