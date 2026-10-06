@@ -577,7 +577,7 @@
       display: block;
       color: inherit;
       overflow: hidden;
-      min-height: 430px;
+      height: 440px;
       border-radius: var(--radius);
       border: 1px solid var(--line);
       background: var(--panel);
@@ -585,7 +585,7 @@
       cursor: pointer;
       transition: transform .28s ease, border-color .28s ease;
     }
-    .portfolio-card img { width: 100%; height: 100%; min-height: 430px; object-fit: cover; opacity: .72; transition: transform .8s ease, opacity .35s ease; }
+    .portfolio-card img { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; object-fit: cover; opacity: .72; transition: transform .8s ease, opacity .35s ease; }
     .portfolio-card:hover { transform: translateY(-8px); border-color: rgba(255,115,0,.38); }
     .portfolio-card:hover img { transform: scale(1.07); opacity: .5; }
     .portfolio-info {
@@ -1033,8 +1033,7 @@
 
       .services-grid > .service-card { min-height: 250px; padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(180deg, #1a1a1a, #0e0e0e); }
       .services-grid > .service-card:last-child { border-bottom: 1px solid var(--line); }
-      .portfolio-grid > .portfolio-card { min-height: 340px; background: #101010; }
-      .portfolio-card img { min-height: 340px; }
+      .portfolio-grid > .portfolio-card { height: 340px; min-height: 0; background: #101010; }
       .industry-cloud > .industry-card { min-height: 92px; background: linear-gradient(145deg, #1d1d1d, #111); backdrop-filter: none; }
     }
     /* touch / narrow screens: no hover "lift" or zoom effects */
