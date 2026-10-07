@@ -1158,6 +1158,45 @@
     }
     @media (max-width: 980px) { .process-grid { padding: 8px; } .stage-list, .process-visual { padding: 14px; } .process-visual img { min-height: 280px; } .stage h4 { font-size: 26px; } }
 
+    /* ===== Process preview: same size for every stage ===== */
+    .process-visual img { flex: none; height: auto; min-height: 0; aspect-ratio: 1.3 / 1; width: 100%; object-fit: cover; transition: opacity .25s ease, transform .4s ease; }
+    @media (max-width: 980px) { .process-visual img { min-height: 0; } }
+
+    /* ===== Contact: premium glass panel, balanced columns ===== */
+    .contact-grid { align-items: stretch; gap: 14px; padding: 14px; border: 1px solid var(--line); border-radius: 26px; background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.02)); box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 40px 100px rgba(0,0,0,.4); }
+    .contact-list, .form { display: flex; flex-direction: column; gap: 12px; padding: 22px; border: 1px solid rgba(255,255,255,.06); border-radius: 18px; background: rgba(255,255,255,.035); box-shadow: none; }
+    .contact-list .col-title, .form .col-title { margin: 0 0 4px; color: var(--white); font-family: inherit; font-size: 13px; font-weight: 700; letter-spacing: .02em; }
+    .contact-card { background: rgba(255,255,255,.03); box-shadow: inset 0 1px 0 rgba(255,255,255,.07); }
+    .contact-steps { margin-top: 10px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.07); }
+    .contact-steps ol { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 16px; }
+    .contact-steps li { position: relative; display: grid; grid-template-columns: 30px 1fr; gap: 14px; align-items: start; }
+    .contact-steps li:not(:last-child)::after { content: ""; position: absolute; left: 14.5px; top: 34px; bottom: -14px; width: 1px; background: linear-gradient(180deg, rgba(255,115,0,.5), rgba(255,255,255,.06)); }
+    .contact-steps b { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; border: 1px solid rgba(255,115,0,.45); background: rgba(255,115,0,.1); color: var(--orange); font-size: 13px; font-weight: 700; }
+    .contact-steps strong { display: block; color: var(--white); font-size: 15px; font-weight: 600; }
+    .contact-steps span { color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+    .contact-social { margin-top: auto; padding-top: 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .contact-social > span { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .contact-social > div { display: flex; gap: 10px; }
+    .contact-social a { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; color: #fffaf2; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); transition: border-color .3s ease, background .3s ease, color .3s ease, transform .3s ease; }
+    .contact-social svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    @media (hover: hover) and (min-width: 981px) { .contact-social a:hover { border-color: rgba(255,115,0,.5); background: rgba(255,115,0,.1); color: var(--orange); transform: translateY(-3px); } }
+    .form { gap: 0; }
+    .form .col-title { margin-bottom: 16px; }
+    .field { margin-bottom: 14px; gap: 7px; }
+    .field label { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .field input, .field select, .field textarea { min-height: 50px; padding: 0 16px; border: 1px solid rgba(255,255,255,.09); border-radius: 14px; background: rgba(255,255,255,.04); font-size: 15px; transition: border-color .25s ease, box-shadow .25s ease, background .25s ease; }
+    .field input:hover, .field select:hover, .field textarea:hover { border-color: rgba(255,255,255,.2); }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: rgba(255,115,0,.7); background: rgba(255,115,0,.04); box-shadow: 0 0 0 4px rgba(255,115,0,.12); }
+    .field select { appearance: none; -webkit-appearance: none; padding-right: 44px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23d6d0c7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; cursor: pointer; }
+    .field textarea { min-height: 112px; padding-top: 14px; }
+    .form > .field:last-of-type { flex: 1; display: flex; flex-direction: column; }
+    .form > .field:last-of-type textarea { flex: 1; min-height: 112px; resize: none; }
+    .form-submit { width: 100%; margin-top: 4px; gap: 10px; }
+    .btn-arrow { fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform .3s ease; }
+    @media (hover: hover) and (min-width: 981px) { .form-submit:hover .btn-arrow { transform: translateX(4px); } }
+    .form-note { margin: 12px 0 0; text-align: center; color: var(--dim); font-size: 12.5px; }
+    @media (max-width: 980px) { .contact-grid { padding: 8px; border-radius: 20px; } .contact-list, .form { padding: 16px; } .contact-social { flex-wrap: wrap; } }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; filter: none; }
@@ -1465,12 +1504,27 @@
         </div>
         <div class="contact-grid">
           <div class="contact-list reveal">
+            <h3 class="col-title">Contact details</h3>
             <a class="contact-card" href="mailto:temmie@leadbridge.com.ng"><div class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z"/><path class="a" d="m4.5 8 7.5 5.5L19.5 8"/></svg></div><div><small>Email</small><strong>temmie@leadbridge.com.ng</strong></div><svg class="contact-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
             <div class="contact-card"><div class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path class="a" d="M12 7.5V12l3 2"/></svg></div><div><small>Response time</small><strong>Within 24 hours</strong></div></div>
             <div class="contact-card"><div class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/><path d="M4 10.5h16M8 4v4M16 4v4"/><path class="a" d="m9.5 15 2 2 3.5-3.5"/></svg></div><div><small>Availability</small><strong><i class="status-dot"></i>Open to new projects</strong></div></div>
+          
+            <div class="contact-steps">
+              <h4 class="col-title">What happens next</h4>
+              <ol>
+                <li><b>1</b><div><strong>You send a message</strong><span>Tell me about your project, goals and timeline.</span></div></li>
+                <li><b>2</b><div><strong>I review and reply</strong><span>You'll hear back within 24 hours.</span></div></li>
+                <li><b>3</b><div><strong>We book a discovery call</strong><span>We pinpoint what to fix first.</span></div></li>
+              </ol>
+            </div>
+            <div class="contact-social"><span>Follow along</span><div>
+              <a href="https://www.instagram.com/temmie.leadbridge/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.2 6.8h.01"/></svg></a>
+              <a href="https://x.com/TemmieDesign" target="_blank" rel="noopener noreferrer" aria-label="Twitter (X)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg></a>
+              <a href="https://www.linkedin.com/in/temmiedesign/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10v9M6 6v.01M11 19v-9M11 14a4 4 0 0 1 8 0v5"/></svg></a>
+            </div></div>
           </div>
           <form class="form reveal" style="--d:140ms" onsubmit="submitForm(event)">
-            <h3>Send a Message</h3>
+            <h3 class="col-title">Send a message</h3>
             <div class="field-grid">
               <div class="field"><label for="firstName">First Name</label><input id="firstName" type="text" placeholder="John" required /></div>
               <div class="field"><label for="lastName">Last Name</label><input id="lastName" type="text" placeholder="Smith" required /></div>
@@ -1478,7 +1532,8 @@
             <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="john@company.com" required /></div>
             <div class="field"><label for="service">Service</label><select id="service"><option>UI/UX Design</option><option>Web Development</option><option>CRO Audit &amp; Testing</option><option>SEO / GEO</option><option>Full Digital Strategy</option></select></div>
             <div class="field"><label for="message">Message</label><textarea id="message" placeholder="Tell me about your project, goals, and timeline..." required></textarea></div>
-            <button class="btn btn-primary" type="submit" style="width:100%">Send Message</button>
+            <button class="btn btn-primary form-submit" type="submit">Send Message <svg class="btn-arrow" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <p class="form-note">I'll reply within 24 hours.</p>
           </form>
         </div>
       </div>
