@@ -1198,14 +1198,9 @@
     @media (max-width: 980px) { .contact-grid { padding: 8px; border-radius: 20px; } .contact-list, .form { padding: 16px; } .contact-social { flex-wrap: wrap; } }
 
     /* ===== About: statement + mock-up columns ===== */
-    .about-statement { color: rgba(255,250,242,.4); max-width: 1100px; margin: 18px 0 64px; font-size: clamp(25px, 3.4vw, 46px); line-height: 1.36; font-weight: 500; letter-spacing: -.015em; text-wrap: pretty; }
-    .about-statement .sw { color: rgba(255,250,242,.22); border-radius: 14px; transition: color .45s ease, background .45s ease; }
-    .about-statement .sw.on { color: rgba(255,250,242,.62); }
-    .about-statement .hl { padding: 1px 14px; margin: 0 2px; white-space: nowrap; }
-    .about-statement .hl.on { color: #fffaf2; background: rgba(255,255,255,.1); }
-    .about-statement .hl.hot.on { color: #ffb374; background: rgba(255,115,0,.2); }
-    .about-statement sup { margin-left: 5px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .3em; font-weight: 500; letter-spacing: .04em; opacity: .55; vertical-align: .95em; }
-    .about-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+    .about-title { max-width: 1080px; font-size: clamp(40px, 5.2vw, 70px); margin-bottom: 22px; }
+    .about-copy { max-width: 640px; }
+    .about-cols { margin-top: 64px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
     .mk-card { position: relative; height: 340px; padding: 26px; overflow: hidden; border: 1px solid rgba(255,255,255,.08); border-radius: 24px; background: linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.012)); transition: border-color .4s ease, box-shadow .4s ease, transform .5s cubic-bezier(.2,.8,.2,1); -webkit-mask-image: linear-gradient(180deg, #000 76%, transparent); mask-image: linear-gradient(180deg, #000 76%, transparent); }
     .mk-win { border: 1px solid rgba(255,255,255,.08); border-radius: 16px; background: rgba(255,255,255,.035); box-shadow: 0 24px 60px rgba(0,0,0,.35); overflow: hidden; }
     .mk-dots { display: flex; gap: 6px; padding: 13px 16px; border-bottom: 1px solid rgba(255,255,255,.06); }
@@ -1235,8 +1230,7 @@
     .about-col h4 { margin-bottom: 14px; color: var(--white); font-family: inherit; font-size: 25px; font-weight: 500; letter-spacing: -.01em; }
     .about-desc { color: var(--muted); font-size: 17px; line-height: 1.65; }
     @media (hover: hover) and (min-width: 981px) { .about-col:hover .mk-card { border-color: rgba(255,115,0,.3); box-shadow: 0 30px 80px rgba(255,115,0,.1); transform: translateY(-5px); } }
-    @media (max-width: 980px) { .about-cols { grid-template-columns: 1fr; gap: 44px; } .about-statement { margin-bottom: 44px; } .mk-card { height: auto; min-height: 300px; padding: 18px; } .about-col h4 { font-size: 23px; } .about-desc { font-size: 16px; } }
-    @media (prefers-reduced-motion: reduce) { .about-statement .sw { color: rgba(255,250,242,.62); } .about-statement .hl { color: #fffaf2; background: rgba(255,255,255,.1); } .about-statement .hl.hot { color: #ffb374; background: rgba(255,115,0,.2); } }
+    @media (max-width: 980px) { .about-cols { grid-template-columns: 1fr; gap: 44px; margin-top: 44px; } .mk-card { height: auto; min-height: 300px; padding: 18px; } .about-col h4 { font-size: 23px; } .about-desc { font-size: 16px; } }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
@@ -1332,7 +1326,8 @@
     <section id="about">
       <div class="container">
         <p class="section-label reveal">About Leadbridge</p>
-        <p class="about-statement" id="aboutStatement"><span class="sw">Leadbridge</span> <span class="sw">gives</span> <span class="sw">you</span> <span class="sw hl">revenue systems<sup>01</sup></span>, <span class="sw hl hot">aligned solutions<sup>02</sup></span>, <span class="sw">and</span> <span class="sw">keeps</span> <span class="sw">you</span> <span class="sw">growing</span> <span class="sw hl">for the long term<sup>03</sup></span>. <span class="sw">You</span> <span class="sw">get</span> <span class="sw">a</span> <span class="sw">website</span> <span class="sw">that</span> <span class="sw">converts</span> <span class="sw">instead</span> <span class="sw">of</span> <span class="sw">one</span> <span class="sw">that</span> <span class="sw">only</span> <span class="sw">looks</span> <span class="sw">good.</span></p>
+        <h2 class="section-title about-title reveal">Leadbridge gives you revenue systems, aligned solutions, <span>and keeps you growing for the long term.</span></h2>
+        <p class="section-copy about-copy reveal">You get a website that converts instead of one that only looks good.</p>
         <div class="about-cols">
           <article class="about-col reveal" style="--d:0ms"><div class="mk-card"><div class="mk-win"><div class="mk-dots"><i></i><i></i><i></i></div><div class="mk-body"><p class="mk-eyebrow">Your funnel</p>
 <div class="mk-bar"><span>Visitors</span><i style="--w:100%"></i></div><div class="mk-bar"><span>Enquiries</span><i style="--w:58%"></i></div><div class="mk-bar"><span>Booked calls</span><i style="--w:30%"></i></div>
@@ -1727,24 +1722,6 @@
         el.style.setProperty("--my", (e.clientY - r.top) + "px");
       });
     });
-    (function aboutLit() {
-      const st = document.getElementById("aboutStatement");
-      if (!st) return;
-      const units = [...st.querySelectorAll(".sw")];
-      let tick = false, last = -1;
-      function upd() {
-        tick = false;
-        const r = st.getBoundingClientRect(), vh = innerHeight;
-        const p = Math.max(0, Math.min(1, (vh * 0.9 - r.top) / (vh * 0.35 + r.height)));
-        const n = Math.round(p * units.length);
-        if (n === last) return;
-        last = n;
-        units.forEach((u, i) => u.classList.toggle("on", i < n));
-      }
-      addEventListener("scroll", () => { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true });
-      addEventListener("resize", upd);
-      upd();
-    })();
     const revealEls = document.querySelectorAll(".reveal");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, index) => {
