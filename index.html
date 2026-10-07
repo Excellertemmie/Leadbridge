@@ -1124,6 +1124,40 @@
     @media (max-width: 640px) { .reveal { transform: translateY(40px) scale(.99); } .cta-mark { width: 64px; height: 64px; border-radius: 18px; } }
     @media (prefers-reduced-motion: reduce) { .split-title .w { opacity: 1; filter: none; transform: none; transition: none; } }
 
+    /* ===== FAQ-style glass panels for Process, Services, Values, Testimonials ===== */
+    .process-grid { gap: 14px; padding: 14px; border: 1px solid var(--line); border-radius: 26px; background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.02)); box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 40px 100px rgba(0,0,0,.4); }
+    .stage-list, .process-visual { padding: 20px; border: 1px solid rgba(255,255,255,.06); border-radius: 18px; background: rgba(255,255,255,.035); }
+    .stage-list { gap: 4px; align-content: start; }
+    .stage-list::before, .process-visual::before { color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: .02em; margin-bottom: 12px; }
+    .stage-list::before { content: "Stages"; display: block; }
+    .process-visual { display: flex; flex-direction: column; }
+    .process-visual::before { content: "Preview"; }
+    .stage { padding: 14px 18px; border: 0; border-radius: 12px; background: transparent; }
+    .stage:hover { background: rgba(255,255,255,.05); transform: none; }
+    .stage.active { background: rgba(255,255,255,.09); transform: none; box-shadow: inset 2px 0 0 var(--orange); }
+    .stage h4 { font-size: 30px; margin: 6px 0 0; }
+    .stage p { max-height: 0; opacity: 0; overflow: hidden; margin: 0; transition: max-height .4s ease, opacity .35s ease, margin .35s ease; }
+    .stage.active p { max-height: 140px; opacity: 1; margin-top: 8px; }
+    .process-visual img { flex: 1; min-height: 440px; border-radius: 12px; border: 1px solid rgba(255,255,255,.08); box-shadow: none; }
+    .value-card { padding: 26px; border: 1px solid rgba(255,255,255,.07); border-radius: 18px; background: rgba(255,255,255,.035); }
+    .value-icon { width: 54px; height: 54px; margin-bottom: 22px; border-radius: 16px; color: #fffaf2; background: linear-gradient(160deg, rgba(255,115,0,.18), rgba(255,255,255,.04) 58%), #0f0f0f; border: 1px solid rgba(255,255,255,.12); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 12px 28px rgba(0,0,0,.45); }
+    .value-icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .testimonial-card { position: relative; overflow: hidden; border-radius: 22px; background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025)); box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 24px 60px rgba(0,0,0,.3); transition: border-color .4s ease, box-shadow .4s ease; }
+    .testimonial-card::before { content: "\201C"; position: absolute; top: 12px; right: 24px; font-family: var(--font-head); font-size: 96px; line-height: 1; color: rgba(255,115,0,.16); pointer-events: none; }
+    .testi-avatar { background: linear-gradient(160deg, #ff8a1f, #ff7300); border: 1px solid rgba(255,255,255,.25); }
+    @media (min-width: 981px) {
+      .values-grid { gap: 12px; padding: 14px; border: 1px solid var(--line); border-radius: 26px; background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.02)); box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 40px 100px rgba(0,0,0,.4); }
+      .services-grid { gap: 10px; padding: 14px; border-radius: 26px; background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.02)); box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 40px 100px rgba(0,0,0,.4); }
+      .services-grid > .service-card { border: 1px solid rgba(255,255,255,.06); border-radius: 18px; background: rgba(255,255,255,.035); }
+    }
+    @media (hover: hover) and (min-width: 981px) {
+      .value-card, .service-card, .testimonial-card { --mx: 50%; --my: 50%; }
+      .value-card:hover { transform: translateY(-4px); border-color: rgba(255,115,0,.32); background: radial-gradient(340px circle at var(--mx) var(--my), rgba(255,115,0,.14), transparent 62%), rgba(255,255,255,.04); }
+      .services-grid > .service-card:hover { border-color: rgba(255,115,0,.3); background: radial-gradient(340px circle at var(--mx) var(--my), rgba(255,115,0,.14), transparent 62%), rgba(255,255,255,.04); }
+      .testimonial-card:hover { border-color: rgba(255,115,0,.3); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 28px 70px rgba(0,0,0,.4); }
+    }
+    @media (max-width: 980px) { .process-grid { padding: 8px; } .stage-list, .process-visual { padding: 14px; } .process-visual img { min-height: 280px; } .stage h4 { font-size: 26px; } }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; filter: none; }
@@ -1250,7 +1284,7 @@
             <article class="stage" onclick="setStage(this, 1)"><span>Stage 02</span><h4>Execution</h4><p>Design, development, copy, automation, and collaboration move together so the work becomes real fast.</p></article>
             <article class="stage" onclick="setStage(this, 2)"><span>Stage 03</span><h4>Handoff</h4><p>You receive assets, documentation, launch support, and a clean system you can keep using.</p></article>
           </div>
-          <div class="process-visual reveal tilt" style="--d:140ms">
+          <div class="process-visual reveal" style="--d:140ms">
             <img id="processImg" src="https://framerusercontent.com/images/Qnjbg5sx80zqC8P7TMF9g3DgCA.jpeg" alt="Process preview" />
           </div>
         </div>
@@ -1589,6 +1623,14 @@
         upd();
       }
     })();
+    document.querySelectorAll(".value-card, .service-card, .testimonial-card").forEach((el) => {
+      el.addEventListener("pointermove", (e) => {
+        if (!window.matchMedia("(hover: hover) and (min-width: 981px)").matches) return;
+        const r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        el.style.setProperty("--my", (e.clientY - r.top) + "px");
+      });
+    });
     const revealEls = document.querySelectorAll(".reveal");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, index) => {
