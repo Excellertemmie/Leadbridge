@@ -389,9 +389,9 @@
       align-items: center;
       gap: 9px;
       margin-bottom: 16px;
-      padding: 7px 13px;
+      padding: 8px 17px;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: 999px;
       background: rgba(255,115,0,.08);
       color: var(--soft);
       font-size: 13px;
@@ -1232,6 +1232,19 @@
     @media (hover: hover) and (min-width: 981px) { .about-col:hover .mk-card { border-color: rgba(255,115,0,.3); box-shadow: 0 30px 80px rgba(255,115,0,.1); transform: translateY(-5px); } }
     @media (max-width: 980px) { .about-cols { grid-template-columns: 1fr; gap: 44px; margin-top: 44px; } .mk-card { height: auto; min-height: 300px; padding: 18px; } .about-col h4 { font-size: 23px; } .about-desc { font-size: 16px; } }
 
+    /* mobile: Core Values cards stack on each other */
+    @media (max-width: 980px) {
+      .values-grid { display: block; }
+      .values-grid > * { position: sticky; margin: 0 0 16px; box-shadow: 0 -14px 34px rgba(0,0,0,.55); }
+      .values-grid > :nth-child(1) { top: 92px; z-index: 1; }
+      .values-grid > :nth-child(2) { top: 103px; z-index: 2; }
+      .values-grid > :nth-child(3) { top: 114px; z-index: 3; }
+      .values-grid > :nth-child(4) { top: 125px; z-index: 4; }
+      .values-grid > :nth-child(5) { top: 136px; z-index: 5; }
+      .values-grid > :nth-child(6) { top: 147px; z-index: 6; }
+      .values-grid > .value-card { min-height: 220px; background: linear-gradient(180deg, #1a1a1a, #0e0e0e); }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; filter: none; }
@@ -1645,7 +1658,7 @@
     </div>
     <div class="footer-bottom">
       <p>Copyright 2026 Leadbridge. All rights reserved.</p>
-      <p>Terms & Conditions · Privacy Policy</p>
+      <p><a href="terms-and-conditions.html">Terms &amp; Conditions</a> · <a href="privacy-policy.html">Privacy Policy</a></p>
     </div>
     <div class="footer-giant" aria-hidden="true">Lead<em>bridge</em></div>
   </footer>
