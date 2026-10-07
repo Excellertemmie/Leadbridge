@@ -1217,16 +1217,62 @@
     .mk-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 15px 16px; color: var(--white); font-size: 14px; font-weight: 600; }
     .mk-pill { padding: 4px 11px; border-radius: 8px; background: rgba(255,115,0,.18); color: #ffb374; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
     .mk-row { display: grid; grid-template-columns: 24px 1fr auto auto; align-items: center; gap: 12px; padding: 13px 16px; border-top: 1px solid rgba(255,255,255,.06); color: var(--white); font-size: 14px; }
-    .mk-row span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .mk-row.done span { color: rgba(255,250,242,.5); text-decoration: line-through; }
-    .mk-check { width: 22px; height: 22px; border-radius: 50%; background: var(--orange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat; }
-    .mk-check.off { background: transparent; border: 1.5px solid rgba(255,255,255,.2); }
+    .mk-row span { min-width: 0; max-width: 100%; justify-self: start; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background: linear-gradient(currentColor, currentColor) no-repeat 0 56% / 0% 1.5px; }
+    .mk-check { position: relative; width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.2); background: transparent; }
+    .mk-check::before { content: ""; position: absolute; inset: -1.5px; border-radius: 50%; background: var(--orange); transform: scale(0); }
+    .mk-check::after { content: ""; position: absolute; inset: -1.5px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat; transform: scale(0); opacity: 0; }
     .mk-row em { padding: 3px 11px; border: 1px solid rgba(255,255,255,.12); border-radius: 99px; color: var(--soft); font-size: 12px; font-style: normal; }
     .mk-row small { min-width: 38px; text-align: right; color: var(--dim); font-size: 12px; }
     .mk-li { display: grid; grid-template-columns: 24px auto 1fr; align-items: center; gap: 12px; padding: 15px 18px; color: var(--white); font-size: 14.5px; }
     .mk-li + .mk-li { border-top: 1px solid rgba(255,255,255,.06); }
     .mk-li svg { width: 20px; height: 20px; fill: none; stroke: var(--orange); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
     .mk-li em { text-align: right; color: var(--muted); font-size: 13.5px; font-style: normal; }
+
+    /* ===== About cards: scroll-triggered animations ===== */
+    /* Card 1: funnel bars fill one after another, then shine, then the result appears */
+    .mk-bar i { position: relative; overflow: hidden; }
+    .mk-bar i::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.55) 50%, transparent 70%); transform: translateX(-120%); }
+    .about-col.inview .mk-bar i { animation: mkFill 1.15s cubic-bezier(.22,.8,.2,1) both; animation-delay: calc(.35s + var(--k) * .7s); }
+    .about-col.inview .mk-bar i::after { animation: mkSweep .9s ease-out both; animation-delay: calc(1.25s + var(--k) * .7s); }
+    .about-col.inview .mk-divider em { animation: mkUp .7s cubic-bezier(.2,.8,.2,1) both; animation-delay: 2.7s; }
+    .about-col.inview .mk-result { animation: mkUp .7s cubic-bezier(.2,.8,.2,1) both; animation-delay: 3s; }
+    @keyframes mkFill { from { width: 0; } to { width: var(--w); } }
+    @keyframes mkSweep { from { transform: translateX(-120%); } to { transform: translateX(120%); } }
+    @keyframes mkUp { from { opacity: 0; transform: translateY(8px) scale(.96); } to { opacity: 1; transform: none; } }
+
+    /* Card 2: goals tick themselves off (1st, then 2nd); the 3rd stays open */
+    .about-col.inview .mk-row.auto .mk-check::before { animation: mkDot .45s cubic-bezier(.3,1.5,.5,1) both; animation-delay: var(--t); }
+    .about-col.inview .mk-row.auto .mk-check::after { animation: mkTick .5s cubic-bezier(.3,1.5,.5,1) both; animation-delay: calc(var(--t) + .12s); }
+    .about-col.inview .mk-row.auto span { animation: mkStrike .5s ease-out both, mkDim .5s ease both; animation-delay: calc(var(--t) + .25s); }
+    .about-col.inview .mk-row.todo .mk-check { animation: mkRing 2.4s ease-out 3.2s infinite; }
+    @keyframes mkDot { from { transform: scale(0); } to { transform: scale(1); } }
+    @keyframes mkTick { from { transform: scale(0) rotate(-40deg); opacity: 0; } to { transform: none; opacity: 1; } }
+    @keyframes mkStrike { from { background-size: 0% 1.5px; } to { background-size: 100% 1.5px; } }
+    @keyframes mkDim { from { color: var(--white); } to { color: rgba(255,250,242,.5); } }
+    @keyframes mkRing { 0% { box-shadow: 0 0 0 0 rgba(255,115,0,.38); } 70%, 100% { box-shadow: 0 0 0 8px rgba(255,115,0,0); } }
+
+    /* Card 3: rows slide in, icons pop, spin 360deg on repeat and glow */
+    .about-col.inview .mk-li { animation: mkSlide .7s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(.2s + var(--k) * .18s); }
+    .about-col.inview .mk-li svg {
+      animation: mkPopIn .7s cubic-bezier(.3,1.5,.5,1) both, mkSpin 6s cubic-bezier(.65,0,.25,1) infinite, mkGlow 3s ease-in-out infinite;
+      animation-delay: calc(.3s + var(--k) * .18s), calc(.7s + var(--k) * .25s), calc(1s + var(--k) * .4s);
+    }
+    .mk-li circle { transform-box: fill-box; transform-origin: center; }
+    .about-col.inview .mk-li circle { animation: mkPupil 4.5s ease-in-out 1.6s infinite; }
+    @keyframes mkSlide { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }
+    @keyframes mkPopIn { from { scale: .3; opacity: 0; } to { scale: 1; opacity: 1; } }
+    @keyframes mkSpin { 0% { rotate: 0deg; } 14%, 100% { rotate: 360deg; } }
+    @keyframes mkGlow { 0%, 100% { filter: drop-shadow(0 0 0 rgba(255,115,0,0)); } 50% { filter: drop-shadow(0 0 5px rgba(255,115,0,.75)); } }
+    @keyframes mkPupil { 0%, 86%, 100% { transform: scale(1); } 92% { transform: scale(.35); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .about-col.inview .mk-bar i, .about-col.inview .mk-bar i::after, .about-col.inview .mk-divider em, .about-col.inview .mk-result,
+      .about-col.inview .mk-row .mk-check, .about-col.inview .mk-row .mk-check::before, .about-col.inview .mk-row .mk-check::after, .about-col.inview .mk-row span,
+      .about-col.inview .mk-li, .about-col.inview .mk-li svg, .about-col.inview .mk-li circle { animation: none !important; }
+      .mk-row.auto .mk-check::before { transform: scale(1); }
+      .mk-row.auto .mk-check::after { transform: none; opacity: 1; }
+      .mk-row.auto span { background-size: 100% 1.5px; color: rgba(255,250,242,.5); }
+    }
     .about-no { margin: 34px 0 14px; color: rgba(255,250,242,.4); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; letter-spacing: .08em; }
     .about-col h4 { margin-bottom: 14px; color: var(--white); font-family: inherit; font-size: 25px; font-weight: 500; letter-spacing: -.01em; }
     .about-desc { color: var(--muted); font-size: 17px; line-height: 1.65; }
@@ -1302,7 +1348,7 @@
         </h1>
         <p class="hero-copy">I'm a design and conversion rate optimization (CRO) consultant. I find where your website loses visitors, then redesign and test the pages so more of them book, buy, or enquire.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Book a Discovery Call</a>
+          <a class="btn btn-primary" href="#contact" data-book>Book a Discovery Call</a>
           <a class="btn btn-secondary" href="#services">What I Offer</a>
         </div>
         <div class="leaders" aria-label="Working with leaders">
@@ -1344,16 +1390,16 @@
         <p class="section-copy about-copy reveal">You get a website that converts instead of one that only looks good.</p>
         <div class="about-cols">
           <article class="about-col reveal" style="--d:0ms"><div class="mk-card"><div class="mk-win"><div class="mk-dots"><i></i><i></i><i></i></div><div class="mk-body"><p class="mk-eyebrow">Your funnel</p>
-<div class="mk-bar"><span>Visitors</span><i style="--w:100%"></i></div><div class="mk-bar"><span>Enquiries</span><i style="--w:58%"></i></div><div class="mk-bar"><span>Booked calls</span><i style="--w:30%"></i></div>
+<div class="mk-bar"><span>Visitors</span><i style="--w:100%;--k:0"></i></div><div class="mk-bar"><span>Enquiries</span><i style="--w:58%;--k:1"></i></div><div class="mk-bar"><span>Booked calls</span><i style="--w:30%;--k:2"></i></div>
 <div class="mk-divider"><em>Optimised &middot; tested</em></div><p class="mk-result">More of your visitors become customers.</p></div></div></div><p class="about-no">01</p><h4>Revenue Systems</h4><p class="about-desc">From zero to measurable revenue with websites, funnels, and campaigns that connect.</p></article>
           <article class="about-col reveal" style="--d:90ms"><div class="mk-card"><div class="mk-win"><div class="mk-head"><span>Growth plan &middot; 3 goals</span><b class="mk-pill">Action</b></div>
-<div class="mk-row done"><i class="mk-check"></i><span>Clarify the offer</span><em>Strategy</em><small>Now</small></div>
-<div class="mk-row"><i class="mk-check off"></i><span>Redesign key pages</span><em>Design</em><small>Next</small></div>
-<div class="mk-row"><i class="mk-check off"></i><span>Set up tracking</span><em>CRO</em><small>Then</small></div></div></div><p class="about-no">02</p><h4>Aligned Solutions</h4><p class="about-desc">Design, strategy, and automation mapped to your goals instead of random digital activity.</p></article>
+<div class="mk-row auto" style="--t:.7s"><i class="mk-check"></i><span>Clarify the offer</span><em>Strategy</em><small>Now</small></div>
+<div class="mk-row auto" style="--t:1.8s"><i class="mk-check"></i><span>Redesign key pages</span><em>Design</em><small>Next</small></div>
+<div class="mk-row todo"><i class="mk-check"></i><span>Set up tracking</span><em>CRO</em><small>Then</small></div></div></div><p class="about-no">02</p><h4>Aligned Solutions</h4><p class="about-desc">Design, strategy, and automation mapped to your goals instead of random digital activity.</p></article>
           <article class="about-col reveal" style="--d:180ms"><div class="mk-card"><div class="mk-win"><div class="mk-dots"><i></i><i></i><i></i></div><div class="mk-list">
-<div class="mk-li"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4"/></svg><span>Retention</span><em>Reviewed over time</em></div>
-<div class="mk-li"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visibility</span><em>SEO &amp; GEO</em></div>
-<div class="mk-li"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Results</span><em>Measured, not guessed</em></div></div></div></div><p class="about-no">03</p><h4>Long-Term Growth</h4><p class="about-desc">Business frameworks built for retention, visibility, and sustainable results after launch.</p></article>
+<div class="mk-li" style="--k:0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4"/></svg><span>Retention</span><em>Reviewed over time</em></div>
+<div class="mk-li" style="--k:1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span>Visibility</span><em>SEO &amp; GEO</em></div>
+<div class="mk-li" style="--k:2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Results</span><em>Measured, not guessed</em></div></div></div></div><p class="about-no">03</p><h4>Long-Term Growth</h4><p class="about-desc">Business frameworks built for retention, visibility, and sustainable results after launch.</p></article>
         </div>
       </div>
     </section>
@@ -1406,7 +1452,7 @@
             <h2 class="section-title reveal">Accelerating Growth Across <span>Diverse Industries.</span></h2>
             <p class="section-copy reveal">If you can dream it, I can shape the system, story, and site that helps people trust it.</p>
             <div class="hero-actions reveal" style="justify-content:flex-start">
-              <a class="btn btn-primary" href="#contact">Contact Me Now</a>
+              <a class="btn btn-primary" href="#contact" data-book>Contact Me Now</a>
               <a class="btn btn-secondary" href="#portfolio">View Portfolio</a>
             </div>
           </div>
@@ -1426,7 +1472,7 @@
             <div class="feature-art"></div>
             <h4>Submit Unlimited Requests</h4>
             <p>Move from idea to polished execution with design, revisions, strategy, and technical support inside one clear workflow.</p>
-            <a class="btn btn-primary" href="#contact">Book an Appointment</a>
+            <a class="btn btn-primary" href="#contact" data-book>Book an Appointment</a>
           </article>
           <article class="feature-tile reveal" style="--d:100ms">
             <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h8l-1 8 11-14h-8l0-6Z"/></svg></div>
@@ -1486,7 +1532,7 @@
           <article class="value-card reveal" style="--d:80ms"><div class="value-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h4>Transparency</h4><p>Clear communication from scope and timeline to costs, feedback, and delivery.</p></article>
           <article class="value-card reveal" style="--d:160ms"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1L12 2Z"/></svg></div><h4>Craft & Quality</h4><p>Precise layout, strong copy, clean interactions, and maintainable front-end work.</p></article>
           <article class="value-card reveal"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.8M16 3.1a4 4 0 0 1 0 7.8"/></svg></div><h4>Partnership</h4><p>I collaborate closely and treat your goals like the center of the engagement.</p></article>
-          <article class="value-card reveal" style="--d:80ms"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h8l-1 8 11-14h-8l0-6Z"/></svg></div><h4>Speed</h4><p>Structured workflows keep momentum high while preserving polish and clarity.</p><a class="btn btn-secondary" href="#contact" style="margin-top:18px">Book Appointment</a></article>
+          <article class="value-card reveal" style="--d:80ms"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h8l-1 8 11-14h-8l0-6Z"/></svg></div><h4>Speed</h4><p>Structured workflows keep momentum high while preserving polish and clarity.</p><a class="btn btn-secondary" href="#contact" data-book style="margin-top:18px">Book Appointment</a></article>
           <article class="value-card reveal" style="--d:160ms"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2Z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7Z"/></svg></div><h4>Learning</h4><p>Modern SEO, GEO, automation, and design patterns keep your business current.</p></article>
         </div>
       </div>
@@ -1502,7 +1548,7 @@
           <div>
             <p class="section-copy reveal">Realistic client voices for the kind of outcomes Leadbridge is built to create.</p>
             <div class="hero-actions reveal" style="justify-content:flex-start">
-              <a class="btn btn-primary" href="#contact">Book an Appointment</a>
+              <a class="btn btn-primary" href="#contact" data-book>Book an Appointment</a>
             </div>
           </div>
         </div>
@@ -1595,7 +1641,7 @@
         <div class="cta-mark reveal"><svg viewBox="0 0 64 48" width="40" height="30" aria-hidden="true"><path d="M8 34C8 20 18 10 32 10s24 10 24 24" fill="none" stroke="#FF7300" stroke-width="7" stroke-linecap="round"/><path d="M4 41h56" stroke="#fffaf2" stroke-width="6" stroke-linecap="round"/></svg></div>
         <h2 class="reveal">Stop guessing. <span>Start converting.</span></h2>
         <p class="reveal" style="--d:100ms">Book a discovery call and we'll pinpoint where your site is losing customers and what to fix first.</p>
-        <a class="btn btn-primary reveal" style="--d:180ms" href="#contact">Book a Discovery Call</a>
+        <a class="btn btn-primary reveal" style="--d:180ms" href="#contact" data-book>Book a Discovery Call</a>
         <small class="cta-note reveal" style="--d:240ms">Replies within 24 hours</small>
       </div>
     </div>
@@ -1666,6 +1712,13 @@
   </footer>
 
   <script>
+    const CAL_LINK = "https://cal.com/exceller-temmie/discovery-call";
+    document.querySelectorAll("[data-book]").forEach((a) => {
+      a.href = CAL_LINK;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+    });
+
     document.documentElement.scrollLeft = 0;
     document.body.scrollLeft = 0;
 
@@ -1747,6 +1800,20 @@
       });
     }, { threshold: 0.16 });
     revealEls.forEach((el) => observer.observe(el));
+
+    /* About cards: play animations whenever the card is properly in view (replays on re-entry) */
+    (function () {
+      const cols = document.querySelectorAll(".about-col");
+      if (!("IntersectionObserver" in window)) { cols.forEach((c) => c.classList.add("inview")); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          const col = e.target.closest(".about-col");
+          if (e.isIntersecting && e.intersectionRatio >= 0.6) col.classList.add("inview");
+          else if (e.intersectionRatio === 0) col.classList.remove("inview");
+        });
+      }, { threshold: [0, 0.6] });
+      cols.forEach((c) => io.observe(c.querySelector(".mk-card")));
+    })();
 
     const navLinks = [...document.querySelectorAll(".nav-links a")];
     const sections = navLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
