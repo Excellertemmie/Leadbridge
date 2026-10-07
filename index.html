@@ -276,7 +276,7 @@
       min-height: 36px;
       padding: 0 16px;
       border: 1px solid var(--line);
-      border-radius: 999px;
+      border-radius: var(--radius);
       background: rgba(255,255,255,.13);
       color: var(--white);
       font-size: 13px;
@@ -593,9 +593,9 @@
       cursor: pointer;
       transition: transform .28s ease, border-color .28s ease;
     }
-    .portfolio-card img { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; object-fit: cover; opacity: .72; transition: transform .8s ease, opacity .35s ease; }
+    .portfolio-card img { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; object-fit: cover; opacity: .95; transition: transform .8s ease, opacity .35s ease; }
     .portfolio-card:hover { transform: translateY(-8px); border-color: rgba(255,115,0,.38); }
-    .portfolio-card:hover img { transform: scale(1.07); opacity: .5; }
+    .portfolio-card:hover img { transform: scale(1.07); opacity: .7; }
     .portfolio-info {
       position: absolute;
       inset: auto 0 0;
@@ -696,7 +696,7 @@
       border-radius: var(--radius);
       background:
         linear-gradient(180deg, transparent 35%, rgba(0,0,0,.62) 100%),
-        url("https://framerusercontent.com/images/nt3TDX5zl4zsmwO69xL44yiUM.jpg") center/cover;
+        url("images/feature-requests.svg") center/cover;
       border: 1px solid rgba(255,255,255,.16);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 24px 60px rgba(0,0,0,.32);
     }
@@ -1052,7 +1052,8 @@
     .brand-word em { color: var(--orange); font-style: italic; }
     @media (max-width: 640px) { .brand-word { font-size: 26px; } .brand-logo { width: 38px; height: 29px; } }
     /* mobile & touch refinements */
-    .nav { padding-left: max(5.5vw, env(safe-area-inset-left)); padding-right: max(5.5vw, env(safe-area-inset-right)); }
+    .nav { padding-left: max(22px, calc((100vw - var(--max)) / 2 + env(safe-area-inset-left, 0px))); padding-right: max(22px, calc((100vw - var(--max)) / 2 + env(safe-area-inset-right, 0px))); }
+    @media (max-width: 640px) { .nav { padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); } }
     .mobile-menu { overflow-y: auto; padding: 96px 24px 40px; align-content: center; justify-items: center; text-align: center; }
     @media (hover: none), (pointer: coarse) { .cursor-glow { display: none; } .stage:hover { transform: none; } .tilt { transform: none !important; } }
     @media (max-width: 640px) {
@@ -1096,7 +1097,7 @@
       .service-card:hover, .portfolio-card:hover, .industry-card:hover, .value-card:hover, .feature-tile:hover, .case-card:hover, .btn:hover { transform: none; }
       .service-card:hover::before { transform: none; opacity: .12; }
       .portfolio-card:hover img, .case-card:hover img, .photo-frame:hover img, .case-gallery figure:hover img { transform: none; }
-      .portfolio-card:hover img { opacity: .72; }
+      .portfolio-card:hover img { opacity: .95; }
     }
 
     /* mobile hero: make the background image actually visible */
@@ -1377,21 +1378,21 @@
         </div>
       </div>
       <div class="case-track" aria-label="Case studies" data-marquee data-set="4" data-dir="-1" data-speed="40">
-        <a class="case-card" href="#portfolio/crimson-studio" data-project-link="crimson-studio"><img src="https://framerusercontent.com/images/gJpgMqolxrZFesWkDXnNXZLWBoY.jpeg" alt="Crimson Studio" /><div class="case-body"><div class="card-meta"><span class="tag">NEW</span><span class="tag">30% Sales Lift</span></div><h4>Crimson Studio</h4><p>Achieved a significant increase in sales within six months through a customized strategy.</p></div></a>
-        <a class="case-card" href="#portfolio/raven-studio" data-project-link="raven-studio"><img src="https://framerusercontent.com/images/JCaZzme2XYHwWAWbEWjb3W3WpE.jpeg" alt="Raven Company" /><div class="case-body"><div class="card-meta"><span class="tag">25% Conversion</span><span class="tag">50% CPA Drop</span></div><h4>Raven Company Inc</h4><p>Streamlined operations while reducing acquisition costs with automation solutions.</p></div></a>
-        <a class="case-card" href="#portfolio/gotham-wonder" data-project-link="gotham-wonder"><img src="https://framerusercontent.com/images/4sfXO1JN4OBl4RWb4t9FBOXw.jpeg" alt="Gotham Wonder" /><div class="case-body"><div class="card-meta"><span class="tag">FRESH</span><span class="tag">60% Traffic</span></div><h4>Gotham Wonder</h4><p>Boosted customer engagement with a digital presence and targeted campaigns.</p></div></a>
-        <a class="case-card" href="#portfolio/sling-interactive" data-project-link="sling-interactive"><img src="https://framerusercontent.com/images/kcm4RjyF1U6efwjAGVhZicw1c8.jpeg" alt="Sling Interactive" /><div class="case-body"><div class="card-meta"><span class="tag">20% Share</span><span class="tag">45% Visibility</span></div><h4>Sling Interactive</h4><p>Expanded market reach by opening new demographics with a focused approach.</p></div></a>
-        <a class="case-card" href="#portfolio/crimson-studio" data-project-link="crimson-studio"><img src="https://framerusercontent.com/images/gJpgMqolxrZFesWkDXnNXZLWBoY.jpeg" alt="Crimson Studio" /><div class="case-body"><div class="card-meta"><span class="tag">NEW</span><span class="tag">30% Sales Lift</span></div><h4>Crimson Studio</h4><p>Achieved a significant increase in sales within six months through a customized strategy.</p></div></a>
-        <a class="case-card" href="#portfolio/raven-studio" data-project-link="raven-studio"><img src="https://framerusercontent.com/images/JCaZzme2XYHwWAWbEWjb3W3WpE.jpeg" alt="Raven Company" /><div class="case-body"><div class="card-meta"><span class="tag">25% Conversion</span><span class="tag">50% CPA Drop</span></div><h4>Raven Company Inc</h4><p>Streamlined operations while reducing acquisition costs with automation solutions.</p></div></a>
-        <a class="case-card" href="#portfolio/gotham-wonder" data-project-link="gotham-wonder"><img src="https://framerusercontent.com/images/4sfXO1JN4OBl4RWb4t9FBOXw.jpeg" alt="Gotham Wonder" /><div class="case-body"><div class="card-meta"><span class="tag">FRESH</span><span class="tag">60% Traffic</span></div><h4>Gotham Wonder</h4><p>Boosted customer engagement with a digital presence and targeted campaigns.</p></div></a>
-        <a class="case-card" href="#portfolio/sling-interactive" data-project-link="sling-interactive"><img src="https://framerusercontent.com/images/kcm4RjyF1U6efwjAGVhZicw1c8.jpeg" alt="Sling Interactive" /><div class="case-body"><div class="card-meta"><span class="tag">20% Share</span><span class="tag">45% Visibility</span></div><h4>Sling Interactive</h4><p>Expanded market reach by opening new demographics with a focused approach.</p></div></a>
+        <a class="case-card" href="#portfolio/crimson-studio" data-project-link="crimson-studio"><img src="images/work-crimson-studio-cover.svg" alt="Crimson Studio" /><div class="case-body"><div class="card-meta"><span class="tag">NEW</span><span class="tag">30% Sales Lift</span></div><h4>Crimson Studio</h4><p>Achieved a significant increase in sales within six months through a customized strategy.</p></div></a>
+        <a class="case-card" href="#portfolio/raven-studio" data-project-link="raven-studio"><img src="images/work-raven-studio-cover.svg" alt="Raven Company" /><div class="case-body"><div class="card-meta"><span class="tag">25% Conversion</span><span class="tag">50% CPA Drop</span></div><h4>Raven Company Inc</h4><p>Streamlined operations while reducing acquisition costs with automation solutions.</p></div></a>
+        <a class="case-card" href="#portfolio/gotham-wonder" data-project-link="gotham-wonder"><img src="images/work-gotham-wonder-cover.svg" alt="Gotham Wonder" /><div class="case-body"><div class="card-meta"><span class="tag">FRESH</span><span class="tag">60% Traffic</span></div><h4>Gotham Wonder</h4><p>Boosted customer engagement with a digital presence and targeted campaigns.</p></div></a>
+        <a class="case-card" href="#portfolio/sling-interactive" data-project-link="sling-interactive"><img src="images/work-sling-interactive-cover.svg" alt="Sling Interactive" /><div class="case-body"><div class="card-meta"><span class="tag">20% Share</span><span class="tag">45% Visibility</span></div><h4>Sling Interactive</h4><p>Expanded market reach by opening new demographics with a focused approach.</p></div></a>
+        <a class="case-card" href="#portfolio/crimson-studio" data-project-link="crimson-studio"><img src="images/work-crimson-studio-cover.svg" alt="Crimson Studio" /><div class="case-body"><div class="card-meta"><span class="tag">NEW</span><span class="tag">30% Sales Lift</span></div><h4>Crimson Studio</h4><p>Achieved a significant increase in sales within six months through a customized strategy.</p></div></a>
+        <a class="case-card" href="#portfolio/raven-studio" data-project-link="raven-studio"><img src="images/work-raven-studio-cover.svg" alt="Raven Company" /><div class="case-body"><div class="card-meta"><span class="tag">25% Conversion</span><span class="tag">50% CPA Drop</span></div><h4>Raven Company Inc</h4><p>Streamlined operations while reducing acquisition costs with automation solutions.</p></div></a>
+        <a class="case-card" href="#portfolio/gotham-wonder" data-project-link="gotham-wonder"><img src="images/work-gotham-wonder-cover.svg" alt="Gotham Wonder" /><div class="case-body"><div class="card-meta"><span class="tag">FRESH</span><span class="tag">60% Traffic</span></div><h4>Gotham Wonder</h4><p>Boosted customer engagement with a digital presence and targeted campaigns.</p></div></a>
+        <a class="case-card" href="#portfolio/sling-interactive" data-project-link="sling-interactive"><img src="images/work-sling-interactive-cover.svg" alt="Sling Interactive" /><div class="case-body"><div class="card-meta"><span class="tag">20% Share</span><span class="tag">45% Visibility</span></div><h4>Sling Interactive</h4><p>Expanded market reach by opening new demographics with a focused approach.</p></div></a>
       </div>
     </section>
 
     <section id="about">
       <div class="container">
         <p class="section-label reveal">About Leadbridge</p>
-        <h2 class="section-title about-title reveal">Leadbridge gives you revenue systems, aligned solutions, <span>and keeps you growing for the long term.</span></h2>
+        <h2 class="section-title about-title reveal">I give you revenue systems, aligned solutions, <span>and keep you growing for the long term.</span></h2>
         <p class="section-copy about-copy reveal">You get a website that converts instead of one that only looks good.</p>
         <div class="about-cols">
           <article class="about-col reveal" style="--d:0ms"><div class="mk-card"><div class="mk-win"><div class="mk-dots"><i></i><i></i><i></i></div><div class="mk-body"><p class="mk-eyebrow">Your funnel</p>
@@ -1414,18 +1415,18 @@
         <div class="section-top">
           <div>
             <p class="section-label reveal">How I Work</p>
-            <h2 class="section-title reveal">We Simplify The Journey <span>From Design To Launch.</span></h2>
+            <h2 class="section-title reveal">I Simplify The Journey <span>From Design To Launch.</span></h2>
           </div>
           <p class="section-copy reveal">Choosing the right partner can define the future of your business. I collaborate, innovate, and deliver with a clear process.</p>
         </div>
         <div class="process-grid">
           <div class="stage-list reveal">
-            <article class="stage active" onclick="setStage(this, 0)"><span>Stage 01</span><h4>Kickoff</h4><p>We align on goals, audience, expectations, project roadmap, and the strategy behind every decision.</p></article>
+            <article class="stage active" onclick="setStage(this, 0)"><span>Stage 01</span><h4>Kickoff</h4><p>You and I align on goals, audience, expectations, project roadmap, and the strategy behind every decision.</p></article>
             <article class="stage" onclick="setStage(this, 1)"><span>Stage 02</span><h4>Execution</h4><p>Design, development, copy, automation, and collaboration move together so the work becomes real fast.</p></article>
             <article class="stage" onclick="setStage(this, 2)"><span>Stage 03</span><h4>Handoff</h4><p>You receive assets, documentation, launch support, and a clean system you can keep using.</p></article>
           </div>
           <div class="process-visual reveal" style="--d:140ms">
-            <img id="processImg" src="https://framerusercontent.com/images/Qnjbg5sx80zqC8P7TMF9g3DgCA.jpeg" alt="Process preview" />
+            <img id="processImg" src="images/process-kickoff.svg" alt="Process preview" />
           </div>
         </div>
       </div>
@@ -1513,12 +1514,12 @@
           <p class="section-copy reveal">A curated set of ecommerce, agency, and SaaS work shaped for clarity, trust, and measurable customer action.</p>
         </div>
         <div class="portfolio-grid">
-          <a class="portfolio-card reveal tilt" href="#portfolio/wayfields" data-project-link="wayfields"><img src="https://framerusercontent.com/images/JCaZzme2XYHwWAWbEWjb3W3WpE.jpeg" alt="Way Fields" /><div class="portfolio-info"><span class="tag">E-Commerce / 2024</span><h4>Way Fields</h4><p>A luxury watch storefront with custom product pages and checkout experience.</p></div></a>
-          <a class="portfolio-card reveal tilt" href="#portfolio/raven-studio" data-project-link="raven-studio" style="--d:100ms"><img src="https://framerusercontent.com/images/4sfXO1JN4OBl4RWb4t9FBOXw.jpeg" alt="Raven Studio" /><div class="portfolio-info"><span class="tag">Agency / 2025</span><h4>Raven Studio</h4><p>A bold creative agency website with immersive motion and portfolio-first layout.</p></div></a>
-          <a class="portfolio-card reveal tilt" href="#portfolio/white-stag" data-project-link="white-stag" style="--d:200ms"><img src="https://framerusercontent.com/images/kcm4RjyF1U6efwjAGVhZicw1c8.jpeg" alt="White Stag" /><div class="portfolio-info"><span class="tag">SaaS / 2024</span><h4>White Stag</h4><p>A SaaS landing page focused on reducing churn through stronger communication.</p></div></a>
-          <a class="portfolio-card reveal tilt" href="#portfolio/crimson-studio" data-project-link="crimson-studio"><img src="https://framerusercontent.com/images/gJpgMqolxrZFesWkDXnNXZLWBoY.jpeg" alt="Crimson Studio" /><div class="portfolio-info"><span class="tag">E-Commerce / 2024</span><h4>Crimson Studio</h4><p>Premium skincare Shopify build with conversion-optimized product pages.</p></div></a>
-          <a class="portfolio-card reveal tilt" href="#portfolio/sling-interactive" data-project-link="sling-interactive" style="--d:100ms"><img src="https://framerusercontent.com/images/oUAzCBZlCCsvzmsAiYQ3RDbhyg.jpeg" alt="Sling Interactive" /><div class="portfolio-info"><span class="tag">Agency / 2025</span><h4>Sling Interactive</h4><p>Tech agency redesign emphasizing case studies, social proof, and service clarity.</p></div></a>
-          <a class="portfolio-card reveal tilt" href="#portfolio/gotham-wonder" data-project-link="gotham-wonder" style="--d:200ms"><img src="https://framerusercontent.com/images/Qnjbg5sx80zqC8P7TMF9g3DgCA.jpeg" alt="Gotham Wonder" /><div class="portfolio-info"><span class="tag">SaaS / 2025</span><h4>Gotham Wonder</h4><p>Product onboarding redesign that reduced drop-off through improved UX flows.</p></div></a>
+          <a class="portfolio-card reveal tilt" href="#portfolio/wayfields" data-project-link="wayfields"><img src="images/work-wayfields-cover.svg" alt="Way Fields" /><div class="portfolio-info"><span class="tag">E-Commerce / 2024</span><h4>Way Fields</h4><p>A luxury watch storefront with custom product pages and checkout experience.</p></div></a>
+          <a class="portfolio-card reveal tilt" href="#portfolio/raven-studio" data-project-link="raven-studio" style="--d:100ms"><img src="images/work-raven-studio-cover.svg" alt="Raven Studio" /><div class="portfolio-info"><span class="tag">Agency / 2025</span><h4>Raven Studio</h4><p>A bold creative agency website with immersive motion and portfolio-first layout.</p></div></a>
+          <a class="portfolio-card reveal tilt" href="#portfolio/white-stag" data-project-link="white-stag" style="--d:200ms"><img src="images/work-white-stag-cover.svg" alt="White Stag" /><div class="portfolio-info"><span class="tag">SaaS / 2024</span><h4>White Stag</h4><p>A SaaS landing page focused on reducing churn through stronger communication.</p></div></a>
+          <a class="portfolio-card reveal tilt" href="#portfolio/crimson-studio" data-project-link="crimson-studio"><img src="images/work-crimson-studio-cover.svg" alt="Crimson Studio" /><div class="portfolio-info"><span class="tag">E-Commerce / 2024</span><h4>Crimson Studio</h4><p>Premium skincare Shopify build with conversion-optimized product pages.</p></div></a>
+          <a class="portfolio-card reveal tilt" href="#portfolio/sling-interactive" data-project-link="sling-interactive" style="--d:100ms"><img src="images/work-sling-interactive-cover.svg" alt="Sling Interactive" /><div class="portfolio-info"><span class="tag">Agency / 2025</span><h4>Sling Interactive</h4><p>Tech agency redesign emphasizing case studies, social proof, and service clarity.</p></div></a>
+          <a class="portfolio-card reveal tilt" href="#portfolio/gotham-wonder" data-project-link="gotham-wonder" style="--d:200ms"><img src="images/work-gotham-wonder-cover.svg" alt="Gotham Wonder" /><div class="portfolio-info"><span class="tag">SaaS / 2025</span><h4>Gotham Wonder</h4><p>Product onboarding redesign that reduced drop-off through improved UX flows.</p></div></a>
         </div>
       </div>
     </section>
@@ -1551,7 +1552,7 @@
             <h2 class="section-title reveal">Customer Reviews About <span>Work, Usability and Design.</span></h2>
           </div>
           <div>
-            <p class="section-copy reveal">Realistic client voices for the kind of outcomes Leadbridge is built to create.</p>
+            <p class="section-copy reveal">Realistic client voices for the kind of outcomes I aim to create.</p>
             <div class="hero-actions reveal" style="justify-content:flex-start">
               <a class="btn btn-primary" href="#contact" data-book>Book an Appointment</a>
             </div>
@@ -1575,13 +1576,13 @@
         <div class="faq-head">
           <p class="section-label reveal">FAQ</p>
           <h2 class="section-title reveal">Frequently <span>Asked Questions.</span></h2>
-          <p class="section-copy reveal">Quick answers to the most common questions before we start building.</p>
+          <p class="section-copy reveal">Quick answers to the most common questions before you reach out.</p>
         </div>
         <div class="faq-panel reveal">
           <div class="faq-col faq-questions">
             <h3 class="faq-col-title">Questions</h3>
             <div class="faq-list">
-            <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">What do I need to get started?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a">Reach out through the contact form and we will schedule a 15-minute discovery call to understand your goals, audience, timeline, and next best move.</div></div>
+            <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">What do I need to get started?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a">Reach out through the contact form and I will schedule a 15-minute discovery call to understand your goals, audience, timeline, and next best move.</div></div>
             <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">What kind of customization is available?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a">Every project is shaped around your brand, including colors, typography, layout, content, interaction style, and conversion goals.</div></div>
             <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">How easy is it to edit for beginners?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a">Depending on the platform, I set up simple structures and provide documentation so you can update content without touching code.</div></div>
             <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">Do I need to know how to code?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a">No. I handle the technical side, including design, development, deployment, and launch preparation.</div></div>
@@ -1617,7 +1618,7 @@
               <ol>
                 <li><b>1</b><div><strong>You send a message</strong><span>Tell me about your project, goals and timeline.</span></div></li>
                 <li><b>2</b><div><strong>I review and reply</strong><span>You'll hear back within 24 hours.</span></div></li>
-                <li><b>3</b><div><strong>We book a discovery call</strong><span>We pinpoint what to fix first.</span></div></li>
+                <li><b>3</b><div><strong>You book a discovery call</strong><span>I pinpoint what to fix first.</span></div></li>
               </ol>
             </div>
             <div class="contact-social"><span>Follow along</span><div>
@@ -1647,9 +1648,9 @@
       <div class="cta-inner">
         <div class="cta-mark reveal"><svg viewBox="0 0 64 48" width="40" height="30" aria-hidden="true"><path d="M8 34C8 20 18 10 32 10s24 10 24 24" fill="none" stroke="#FF7300" stroke-width="7" stroke-linecap="round"/><path d="M4 41h56" stroke="#fffaf2" stroke-width="6" stroke-linecap="round"/></svg></div>
         <h2 class="reveal">Stop guessing. <span>Start converting.</span></h2>
-        <p class="reveal" style="--d:100ms">Book a discovery call and we'll pinpoint where your site is losing customers and what to fix first.</p>
+        <p class="reveal" style="--d:100ms">Book a discovery call and I'll pinpoint where your site is losing customers and what to fix first.</p>
         <a class="btn btn-primary reveal" style="--d:180ms" href="#contact" data-book>Book a Discovery Call</a>
-        <small class="cta-note reveal" style="--d:240ms">Replies within 24 hours</small>
+        <small class="cta-note reveal" style="--d:240ms">A 15-minute call to understand your goals</small>
       </div>
     </div>
 
@@ -1900,84 +1901,84 @@
       "wayfields": {
         title: "Way Fields",
         type: "E-Commerce / 2024",
-        image: "https://framerusercontent.com/images/JCaZzme2XYHwWAWbEWjb3W3WpE.jpeg",
+        image: "images/work-wayfields-cover.svg",
         intro: "A luxury watch ecommerce experience designed to feel premium, direct, and easy to buy from.",
         facts: [["Industry", "Luxury Ecommerce"], ["Timeline", "5 Weeks"], ["Scope", "Storefront, product pages, checkout"], ["Result", "Higher product confidence and stronger conversion flow"]],
         challenge: "Way Fields needed a storefront that could communicate craftsmanship quickly while guiding visitors from product discovery into purchase without friction.",
         solution: "The project centered on a cinematic product presentation, sharp category hierarchy, detailed product pages, trust-building sections, and a checkout path that felt calm and premium.",
         outcome: "The finished experience gave the brand a stronger visual system, clearer product story, and a shopping journey built around confidence instead of clutter.",
-        gallery: [["https://framerusercontent.com/images/JCaZzme2XYHwWAWbEWjb3W3WpE.jpeg", "Hero product direction with a premium watch-first composition."], ["https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1000&q=85", "Product detail modules built to make materials, specs, and finish easier to trust."], ["https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=1000&q=85", "Checkout and category flow mapped around fewer decisions and stronger product confidence."]],
-        beforeAfter: [["Before", "A product-led store with limited storytelling, weak trust cues, and product pages that did not explain value fast enough.", "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=1000&q=80"], ["After", "A cinematic storefront with sharper hierarchy, proof sections, product education, and a clearer path to purchase.", "https://framerusercontent.com/images/JCaZzme2XYHwWAWbEWjb3W3WpE.jpeg"]],
+        gallery: [["images/work-wayfields-cover.svg", "Hero product direction with a premium watch-first composition."], ["images/work-wayfields-detail.svg", "Product detail modules built to make materials, specs, and finish easier to trust."], ["images/work-wayfields-mobile.svg", "Checkout and category flow mapped around fewer decisions and stronger product confidence."]],
+        beforeAfter: [["Before", "A product-led store with limited storytelling, weak trust cues, and product pages that did not explain value fast enough.", "images/work-wayfields-before.svg"], ["After", "A cinematic storefront with sharper hierarchy, proof sections, product education, and a clearer path to purchase.", "images/work-wayfields-cover.svg"]],
         study: [["Research Work", "I reviewed competitor watch brands, luxury ecommerce patterns, product-page objections, and the moments where buyers need proof before checkout."], ["Thought Process", "The direction was to make the store feel premium without becoming slow or decorative. Every section had to answer either desire, trust, or purchase confidence."], ["Analysis", "The biggest gaps were product education, visual hierarchy, and unclear purchase motivation. I mapped the page around discovery, credibility, specification, and action."], ["Tools Used", "Figma for interface systems, Framer-style interaction planning, Shopify structure planning, Google Analytics event thinking, and conversion copy frameworks."]],
         impact: [["30%", "Increase in product-page engagement"], ["18%", "Higher add-to-cart intent"], ["42%", "More scroll depth on key pages"], ["5 wks", "From strategy to launch-ready handoff"]]
       },
       "raven-studio": {
         title: "Raven Studio",
         type: "Agency / 2025",
-        image: "https://framerusercontent.com/images/4sfXO1JN4OBl4RWb4t9FBOXw.jpeg",
+        image: "images/work-raven-studio-cover.svg",
         intro: "A creative agency site with immersive motion, confident case-study framing, and a sharper conversion path.",
         facts: [["Industry", "Creative Agency"], ["Timeline", "4 Weeks"], ["Scope", "Brand site, case studies, CTA flow"], ["Result", "25% conversion rate improvement"]],
         challenge: "Raven Studio had strong work but the site did not package that work into a persuasive story for high-value prospects.",
         solution: "I built an editorial portfolio rhythm, animated image-led sections, service clarity, and appointment CTAs in high-intent moments.",
         outcome: "The new flow made the agency feel more established while helping visitors understand what to do next.",
-        gallery: [["https://framerusercontent.com/images/4sfXO1JN4OBl4RWb4t9FBOXw.jpeg", "Portfolio-first hero treatment built around bold work previews."], ["https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=85", "Workshop and service architecture translated into clearer buyer journeys."], ["https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1000&q=85", "Case-study blocks structured to make proof easier to scan."]],
-        beforeAfter: [["Before", "The agency had great work but little narrative, unclear service packaging, and weak appointment prompts.", "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1000&q=80"], ["After", "The redesign created a bold portfolio system with stronger proof, clearer services, and CTA moments that feel natural.", "https://framerusercontent.com/images/4sfXO1JN4OBl4RWb4t9FBOXw.jpeg"]],
+        gallery: [["images/work-raven-studio-cover.svg", "Portfolio-first hero treatment built around bold work previews."], ["images/work-raven-studio-detail.svg", "Workshop and service architecture translated into clearer buyer journeys."], ["images/work-raven-studio-mobile.svg", "Case-study blocks structured to make proof easier to scan."]],
+        beforeAfter: [["Before", "The agency had great work but little narrative, unclear service packaging, and weak appointment prompts.", "images/work-raven-studio-before.svg"], ["After", "The redesign created a bold portfolio system with stronger proof, clearer services, and CTA moments that feel natural.", "images/work-raven-studio-cover.svg"]],
         study: [["Research Work", "I audited creative agency sites, reviewed how prospects compare agencies, and mapped the objections that appear before booking a call."], ["Thought Process", "Raven needed to feel sharp and selective. The design uses confident spacing, moving imagery, and simple service language to create trust quickly."], ["Analysis", "The old flow hid the strongest proof too deep. I moved case-study outcomes, client context, and CTAs closer to the first meaningful scroll points."], ["Tools Used", "Figma, Notion research notes, competitive teardown boards, Web animation references, and conversion-focused content mapping."]],
         impact: [["25%", "Lift in consultation intent"], ["2.1x", "More case-study interaction"], ["38%", "Increase in service-page clarity score"], ["4 wks", "Strategy, design, and implementation"]]
       },
       "white-stag": {
         title: "White Stag",
         type: "SaaS / 2024",
-        image: "https://framerusercontent.com/images/kcm4RjyF1U6efwjAGVhZicw1c8.jpeg",
+        image: "images/work-white-stag-cover.svg",
         intro: "A SaaS landing page focused on reducing churn through clearer value communication and onboarding.",
         facts: [["Industry", "SaaS"], ["Timeline", "3 Weeks"], ["Scope", "Landing page, onboarding copy, UX flow"], ["Result", "Reduced early drop-off"]],
         challenge: "White Stag needed a clearer explanation of its product and a first impression that made the value feel immediate.",
         solution: "The design paired crisp product messaging with proof-led sections, focused CTAs, and an onboarding story that reduced uncertainty.",
         outcome: "Users could understand the product faster, making the page more useful for acquisition and activation.",
-        gallery: [["https://framerusercontent.com/images/kcm4RjyF1U6efwjAGVhZicw1c8.jpeg", "SaaS hero flow with clearer product promise and social proof."], ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=85", "Dashboard story blocks designed to explain value quickly."], ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=85", "Analytics-led messaging for activation and retention."]],
-        beforeAfter: [["Before", "The product promise was buried, onboarding felt abstract, and the page did not guide new users toward activation.", "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1000&q=80"], ["After", "The new journey explains the product in clear stages with focused CTAs, benefit-led copy, and stronger proof.", "https://framerusercontent.com/images/kcm4RjyF1U6efwjAGVhZicw1c8.jpeg"]],
+        gallery: [["images/work-white-stag-cover.svg", "SaaS hero flow with clearer product promise and social proof."], ["images/work-white-stag-detail.svg", "Dashboard story blocks designed to explain value quickly."], ["images/work-white-stag-mobile.svg", "Analytics-led messaging for activation and retention."]],
+        beforeAfter: [["Before", "The product promise was buried, onboarding felt abstract, and the page did not guide new users toward activation.", "images/work-white-stag-before.svg"], ["After", "The new journey explains the product in clear stages with focused CTAs, benefit-led copy, and stronger proof.", "images/work-white-stag-cover.svg"]],
         study: [["Research Work", "I studied SaaS activation patterns, onboarding drop-off causes, and competitor messaging to understand where users hesitate."], ["Thought Process", "The page needed to do less explaining and more guiding. I used tighter copy, product-led sections, and repeated proof at decision points."], ["Analysis", "The biggest issue was cognitive load. I reduced the number of concepts per section and made the next action obvious after every key claim."], ["Tools Used", "Figma, heuristic UX review, onboarding journey mapping, analytics event planning, and copywriting frameworks."]],
         impact: [["31%", "Lower onboarding friction"], ["46%", "More CTA engagement"], ["22%", "Better trial-start intent"], ["3 wks", "UX, copy, and visual redesign"]]
       },
       "crimson-studio": {
         title: "Crimson Studio",
         type: "E-Commerce / 2024",
-        image: "https://framerusercontent.com/images/gJpgMqolxrZFesWkDXnNXZLWBoY.jpeg",
+        image: "images/work-crimson-studio-cover.svg",
         intro: "A premium skincare build with conversion-focused product pages and strong brand trust signals.",
         facts: [["Industry", "Beauty Ecommerce"], ["Timeline", "6 Weeks"], ["Scope", "Shopify design, product pages, email capture"], ["Result", "30% sales increase"]],
         challenge: "Crimson Studio needed a storefront that could make the product feel credible while improving the path to purchase.",
         solution: "I used a sensory visual direction, ingredient-led content blocks, social proof, and cleaner purchase modules.",
         outcome: "The site created stronger buyer confidence and supported a significant lift in sales.",
-        gallery: [["https://framerusercontent.com/images/gJpgMqolxrZFesWkDXnNXZLWBoY.jpeg", "Premium product imagery framed with stronger brand storytelling."], ["https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1000&q=85", "Ingredient and benefit sections created to answer buyer objections."], ["https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1000&q=85", "Collection flow optimized for easier product comparison."]],
-        beforeAfter: [["Before", "The store looked clean but lacked emotional pull, ingredient education, and trust signals near product decisions.", "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1000&q=80"], ["After", "The redesign added sensory visuals, benefit-led content, review prompts, and a smoother purchase journey.", "https://framerusercontent.com/images/gJpgMqolxrZFesWkDXnNXZLWBoY.jpeg"]],
+        gallery: [["images/work-crimson-studio-cover.svg", "Premium product imagery framed with stronger brand storytelling."], ["images/work-crimson-studio-detail.svg", "Ingredient and benefit sections created to answer buyer objections."], ["images/work-crimson-studio-mobile.svg", "Collection flow optimized for easier product comparison."]],
+        beforeAfter: [["Before", "The store looked clean but lacked emotional pull, ingredient education, and trust signals near product decisions.", "images/work-crimson-studio-before.svg"], ["After", "The redesign added sensory visuals, benefit-led content, review prompts, and a smoother purchase journey.", "images/work-crimson-studio-cover.svg"]],
         study: [["Research Work", "I reviewed skincare buyer behavior, competitor product pages, ingredient education formats, and review placement patterns."], ["Thought Process", "Beauty buyers need both desire and reassurance. The site had to feel premium while making ingredients, usage, and benefits easy to understand."], ["Analysis", "The most important missing pieces were proof, education, and stronger product comparison. I rebuilt those moments into the page sequence."], ["Tools Used", "Figma, Shopify planning, Klaviyo/email flow strategy, product-page CRO checklist, and brand voice refinement."]],
         impact: [["30%", "Increase in sales"], ["40%", "Boost in retention"], ["27%", "More product comparison"], ["6 wks", "Full ecommerce redesign"]]
       },
       "sling-interactive": {
         title: "Sling Interactive",
         type: "Agency / 2025",
-        image: "https://framerusercontent.com/images/oUAzCBZlCCsvzmsAiYQ3RDbhyg.jpeg",
+        image: "images/work-sling-interactive-cover.svg",
         intro: "A tech agency redesign built around case studies, social proof, and clearer service positioning.",
         facts: [["Industry", "Technology Agency"], ["Timeline", "5 Weeks"], ["Scope", "Website redesign, service pages, proof system"], ["Result", "45% enhanced visibility"]],
         challenge: "The previous experience undersold the agency's technical ability and made services difficult to compare.",
         solution: "I clarified the service architecture, rebuilt the case-study hierarchy, and added CTAs where buying intent naturally appears.",
         outcome: "The redesign helped Sling Interactive feel more specialist, more trustworthy, and easier to contact.",
-        gallery: [["https://framerusercontent.com/images/oUAzCBZlCCsvzmsAiYQ3RDbhyg.jpeg", "Technology-forward visual system with stronger case-study hierarchy."], ["https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=85", "Service pages structured around how technical buyers compare partners."], ["https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=85", "Proof and CTA modules placed closer to high-intent content."]],
-        beforeAfter: [["Before", "Services were broad, proof was scattered, and technical credibility was not obvious early enough.", "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80"], ["After", "The new site packaged services, proof, and outcomes into a focused agency story.", "https://framerusercontent.com/images/oUAzCBZlCCsvzmsAiYQ3RDbhyg.jpeg"]],
+        gallery: [["images/work-sling-interactive-cover.svg", "Technology-forward visual system with stronger case-study hierarchy."], ["images/work-sling-interactive-detail.svg", "Service pages structured around how technical buyers compare partners."], ["images/work-sling-interactive-mobile.svg", "Proof and CTA modules placed closer to high-intent content."]],
+        beforeAfter: [["Before", "Services were broad, proof was scattered, and technical credibility was not obvious early enough.", "images/work-sling-interactive-before.svg"], ["After", "The new site packaged services, proof, and outcomes into a focused agency story.", "images/work-sling-interactive-cover.svg"]],
         study: [["Research Work", "I reviewed agency positioning, B2B service-page expectations, technical proof patterns, and the questions prospects ask before outreach."], ["Thought Process", "The design needed to make Sling feel specialist. I focused on confident hierarchy, concise service language, and repeated evidence."], ["Analysis", "The old site asked users to infer too much. The new structure makes services, process, and outcomes explicit at the right moments."], ["Tools Used", "Figma, service blueprinting, competitive analysis, Webflow/Framer motion references, and conversion copy planning."]],
         impact: [["45%", "Enhanced visibility"], ["20%", "More qualified inquiries"], ["2x", "Case-study click-through"], ["5 wks", "From audit to launch"]]
       },
       "gotham-wonder": {
         title: "Gotham Wonder",
         type: "SaaS / 2025",
-        image: "https://framerusercontent.com/images/Qnjbg5sx80zqC8P7TMF9g3DgCA.jpeg",
+        image: "images/work-gotham-wonder-cover.svg",
         intro: "A product onboarding redesign that reduced drop-off through clearer UX flows and stronger microcopy.",
         facts: [["Industry", "SaaS"], ["Timeline", "4 Weeks"], ["Scope", "Onboarding UX, landing sections, messaging"], ["Result", "60% increased traffic"]],
         challenge: "Gotham Wonder had attention, but users were dropping before they understood the product's strongest value.",
         solution: "I redesigned the onboarding journey with clearer steps, better expectation-setting, and more focused conversion moments.",
         outcome: "The product became easier to evaluate and easier to start using, improving both engagement and qualified traffic.",
-        gallery: [["https://framerusercontent.com/images/Qnjbg5sx80zqC8P7TMF9g3DgCA.jpeg", "Onboarding visuals redesigned around clarity and user confidence."], ["https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1000&q=85", "User-flow planning focused on removing friction before activation."], ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=85", "Product benefit sections structured around measurable outcomes."]],
-        beforeAfter: [["Before", "Users were interested but the onboarding story had too many unclear steps and weak value reinforcement.", "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1000&q=80"], ["After", "The new flow uses simpler steps, stronger microcopy, and clearer value checkpoints.", "https://framerusercontent.com/images/Qnjbg5sx80zqC8P7TMF9g3DgCA.jpeg"]],
+        gallery: [["images/work-gotham-wonder-cover.svg", "Onboarding visuals redesigned around clarity and user confidence."], ["images/work-gotham-wonder-detail.svg", "User-flow planning focused on removing friction before activation."], ["images/work-gotham-wonder-mobile.svg", "Product benefit sections structured around measurable outcomes."]],
+        beforeAfter: [["Before", "Users were interested but the onboarding story had too many unclear steps and weak value reinforcement.", "images/work-gotham-wonder-before.svg"], ["After", "The new flow uses simpler steps, stronger microcopy, and clearer value checkpoints.", "images/work-gotham-wonder-cover.svg"]],
         study: [["Research Work", "I reviewed onboarding analytics patterns, SaaS activation benchmarks, and user questions that commonly appear before signup."], ["Thought Process", "The goal was to make the product feel easy before the user touched it. Every section reduces uncertainty and points to the next step."], ["Analysis", "The drop-off problem came from unclear sequencing. I rebuilt the journey around what users need to believe before they continue."], ["Tools Used", "Figma, user-flow mapping, heuristic analysis, analytics event planning, and microcopy testing notes."]],
         impact: [["60%", "Increased qualified traffic"], ["35%", "Growth in activation intent"], ["28%", "Lower onboarding confusion"], ["4 wks", "UX and messaging sprint"]]
       }
@@ -2046,9 +2047,9 @@
     function closeMobileMenu() { document.getElementById("mobileMenu").classList.remove("open"); document.body.style.overflow = ""; document.querySelector(".mobile-toggle").setAttribute("aria-expanded","false"); }
 
     const processImgs = [
-      "https://framerusercontent.com/images/Qnjbg5sx80zqC8P7TMF9g3DgCA.jpeg",
-      "https://framerusercontent.com/images/oUAzCBZlCCsvzmsAiYQ3RDbhyg.jpeg",
-      "https://framerusercontent.com/images/w8s17EhZCy1HskMXDn2rLsloPg.png"
+      "images/process-kickoff.svg",
+      "images/process-execution.svg",
+      "images/process-handoff.svg"
     ];
     function setStage(el, index) {
       document.querySelectorAll(".stage").forEach((stage) => stage.classList.remove("active"));
