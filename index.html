@@ -276,7 +276,7 @@
       min-height: 36px;
       padding: 0 16px;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: 999px;
       background: rgba(255,255,255,.13);
       color: var(--white);
       font-size: 13px;
@@ -286,11 +286,13 @@
 
     .eyebrow::before {
       content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--orange);
-      box-shadow: 0 0 20px var(--orange);
+      flex: none;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #3ddc84;
+      box-shadow: 0 0 0 0 rgba(61,220,132,.55);
+      animation: statusPulse 2.2s ease-out infinite;
     }
 
     .hero h1 {
@@ -490,8 +492,7 @@
     @media (max-width: 980px) { .photo-frame { position: relative; top: 0; border-radius: 22px; } .photo-frame img { aspect-ratio: 4 / 3.6; transform: none !important; } .check-item { padding: 18px; grid-template-columns: 48px 1fr; gap: 14px; } .check-icon { width: 48px; height: 48px; border-radius: 14px; } .check-no { font-size: 44px; right: 14px; } .check-item h4 { font-size: 22px; } }
 
     .results { overflow: hidden; background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,115,0,.04)); border-block: 1px solid var(--line); }
-    .case-track { display: flex; gap: 22px; width: max-content; animation: caseMarquee 34s linear infinite; }
-    .case-track:hover { animation-play-state: paused; }
+    .case-track { display: flex; gap: 22px; width: max-content; will-change: transform; }
     .case-card {
       display: block;
       color: inherit;
@@ -705,13 +706,13 @@
     .testimonial-track {
       width: min(var(--max), calc(100vw - 44px));
       margin: 56px auto 0;
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
+      display: block;
+      overflow: hidden;
       padding-bottom: 16px;
-      scrollbar-width: none;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
     }
-    .testimonial-track::-webkit-scrollbar { display: none; }
+    .testimonial-rail { display: flex; gap: 16px; width: max-content; will-change: transform; }
     .testimonial-card {
       flex: 0 0 340px;
       min-height: 340px;
@@ -882,6 +883,11 @@
       .faq-item.open .faq-a { max-height: 320px; padding: 6px 14px 16px; }
       .faq-item.open .faq-icon { transform: rotate(45deg); }
     }
+    @media (prefers-reduced-motion: reduce) {
+      .case-track { width: auto; overflow-x: auto; scrollbar-width: none; }
+      .testimonial-track { overflow-x: auto; scrollbar-width: none; -webkit-mask-image: none; mask-image: none; }
+      .testimonial-rail { transform: none !important; }
+    }
     @media (prefers-reduced-motion: reduce) { .faq-user, .faq-bot { animation: none; } .faq-typing i { animation: none; opacity: .6; } }
 
     .contact-grid {
@@ -929,7 +935,7 @@
       .contact-icon svg { width: 24px; height: 24px; }
       .contact-card strong { font-size: 15.5px; }
     }
-    @media (prefers-reduced-motion: reduce) { .status-dot { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .status-dot, .eyebrow::before { animation: none; } }
     .form {
       padding: 24px;
       border: 1px solid var(--line);
@@ -985,7 +991,6 @@
     @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes heroDrift { from { transform: scale(1.04) translate3d(-10px, -8px, 0); } to { transform: scale(1.11) translate3d(12px, 10px, 0); } }
     @keyframes marquee { to { transform: translateX(-50%); } }
-    @keyframes caseMarquee { to { transform: translateX(-33.333%); } }
 
     @media (max-width: 980px) {
       .nav-links, .nav > .btn { display: none; }
@@ -1054,7 +1059,7 @@
       .field input, .field select, .field textarea { font-size: 16px; }
       .btn { white-space: normal; text-align: center; padding-block: 12px; }
       .mobile-toggle { width: 48px; height: 48px; }
-      .testimonial-track { width: calc(100vw - 36px); scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+      .testimonial-track { width: calc(100vw - 36px); }
       .testimonial-card { flex: 0 0 min(300px, 84vw); min-height: 300px; padding: 26px 22px; scroll-snap-align: start; }
       .stage h4 { font-size: 30px; }
       .process-visual img { min-height: 260px; }
@@ -1371,7 +1376,7 @@
           <p class="section-copy reveal">At the core of everything, I'm committed to outcomes that show up in traffic, conversion, sales, retention, and operational clarity.</p>
         </div>
       </div>
-      <div class="case-track" aria-label="Case studies">
+      <div class="case-track" aria-label="Case studies" data-marquee data-set="4" data-dir="-1" data-speed="40">
         <a class="case-card" href="#portfolio/crimson-studio" data-project-link="crimson-studio"><img src="https://framerusercontent.com/images/gJpgMqolxrZFesWkDXnNXZLWBoY.jpeg" alt="Crimson Studio" /><div class="case-body"><div class="card-meta"><span class="tag">NEW</span><span class="tag">30% Sales Lift</span></div><h4>Crimson Studio</h4><p>Achieved a significant increase in sales within six months through a customized strategy.</p></div></a>
         <a class="case-card" href="#portfolio/raven-studio" data-project-link="raven-studio"><img src="https://framerusercontent.com/images/JCaZzme2XYHwWAWbEWjb3W3WpE.jpeg" alt="Raven Company" /><div class="case-body"><div class="card-meta"><span class="tag">25% Conversion</span><span class="tag">50% CPA Drop</span></div><h4>Raven Company Inc</h4><p>Streamlined operations while reducing acquisition costs with automation solutions.</p></div></a>
         <a class="case-card" href="#portfolio/gotham-wonder" data-project-link="gotham-wonder"><img src="https://framerusercontent.com/images/4sfXO1JN4OBl4RWb4t9FBOXw.jpeg" alt="Gotham Wonder" /><div class="case-body"><div class="card-meta"><span class="tag">FRESH</span><span class="tag">60% Traffic</span></div><h4>Gotham Wonder</h4><p>Boosted customer engagement with a digital presence and targeted campaigns.</p></div></a>
@@ -1554,12 +1559,14 @@
         </div>
       </div>
       <div class="testimonial-track">
+      <div class="testimonial-rail" data-marquee data-set="6" data-dir="1" data-speed="36">
         <article class="testimonial-card"><div><div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div><blockquote>"They not only delivered a top-notch website but also provided strategic insights that helped us improve our overall digital presence."</blockquote></div><div class="testimonial-user"><div class="testi-avatar">J</div><div><strong>John Smith</strong><span>CEO - Innovate Solutions</span></div></div></article>
         <article class="testimonial-card"><div><div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div><blockquote>"The team understood our complex requirements and provided a user-friendly, high-performing website that stands out in the market."</blockquote></div><div class="testimonial-user"><div class="testi-avatar">E</div><div><strong>Emily Davis</strong><span>Product Manager - Nexus Digital</span></div></div></article>
         <article class="testimonial-card"><div><div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div><blockquote>"Their innovative solutions helped streamline our operations, and the website design is both functional and visually stunning."</blockquote></div><div class="testimonial-user"><div class="testi-avatar">D</div><div><strong>David Lee</strong><span>Founder - GreenLeaf Enterprises</span></div></div></article>
         <article class="testimonial-card"><div><div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div><blockquote>"We were blown away by the creative approach and attention to detail. The team took our ideas and turned them into a stunning website."</blockquote></div><div class="testimonial-user"><div class="testi-avatar">M</div><div><strong>Mark Thompson</strong><span>Creative Director - PixelWorks</span></div></div></article>
         <article class="testimonial-card"><div><div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div><blockquote>"They delivered a customized solution that addressed all of our business needs. The website is sleek, functional, and improved our customer experience."</blockquote></div><div class="testimonial-user"><div class="testi-avatar">B</div><div><strong>Brian Clark</strong><span>Team Lead - Mandro Designs</span></div></div></article>
         <article class="testimonial-card"><div><div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div><blockquote>"The dedication and attention to detail are unmatched. They delivered a beautifully designed website that perfectly reflects our brand."</blockquote></div><div class="testimonial-user"><div class="testi-avatar">D</div><div><strong>Daniel Carter</strong><span>Founder - Fusion Studios</span></div></div></article>
+      </div>
       </div>
     </section>
 
@@ -1782,6 +1789,69 @@
         upd();
       }
     })();
+    /* Infinite marquees (Results + Testimonials). JS-driven so it behaves the same in Safari/iOS. */
+    (function marquees() {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; /* CSS makes these swipeable instead */
+      document.querySelectorAll("[data-marquee]").forEach((track) => {
+        const setN = parseInt(track.dataset.set, 10) || track.children.length;
+        const dir = track.dataset.dir === "1" ? 1 : -1;
+        const speed = parseFloat(track.dataset.speed) || 40;
+        const clip = track.parentElement;
+        let setW = 0, x = 0, paused = false, running = false, last = 0, raf = 0;
+
+        function measure() {
+          const kids = track.children;
+          if (kids.length < setN) return;
+          const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+          const a = kids[0], b = kids[setN - 1];
+          const w = b.offsetLeft + b.offsetWidth + gap - a.offsetLeft;
+          if (!(w > 0)) return; /* hidden (e.g. project page open) - try again on resize */
+          setW = w;
+          const need = (clip.clientWidth || window.innerWidth) + setW;
+          let guard = 0;
+          while (track.offsetWidth < need && guard++ < 12) {
+            for (let i = 0; i < setN; i++) {
+              const c = kids[i].cloneNode(true);
+              c.setAttribute("aria-hidden", "true");
+              if (c.matches("a")) c.tabIndex = -1;
+              c.querySelectorAll("a, button").forEach((n) => (n.tabIndex = -1));
+              track.appendChild(c);
+            }
+          }
+          x = ((x % setW) + setW) % setW - setW;
+        }
+
+        function frame(now) {
+          if (!running) return;
+          const dt = Math.min(now - last, 64) / 1000;
+          last = now;
+          if (!paused && setW > 0) {
+            x += dir * speed * dt;
+            if (dir < 0 && x <= -setW) x += setW;
+            else if (dir > 0 && x >= 0) x -= setW;
+            track.style.transform = "translate3d(" + x.toFixed(2) + "px,0,0)";
+          }
+          raf = requestAnimationFrame(frame);
+        }
+        function start() { if (running) return; running = true; last = performance.now(); raf = requestAnimationFrame(frame); }
+        function stop() { running = false; cancelAnimationFrame(raf); }
+
+        /* pause while a mouse hovers or a finger is down; never stays stuck on touch screens */
+        track.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") paused = true; });
+        track.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") paused = false; });
+        track.addEventListener("pointerdown", (e) => { if (e.pointerType !== "mouse") paused = true; });
+        ["pointerup", "pointercancel"].forEach((ev) => track.addEventListener(ev, (e) => { if (e.pointerType !== "mouse") paused = false; }));
+
+        measure();
+        if ("ResizeObserver" in window) new ResizeObserver(measure).observe(clip);
+        window.addEventListener("resize", measure, { passive: true });
+        window.addEventListener("load", measure);
+        if ("IntersectionObserver" in window) {
+          new IntersectionObserver((es) => (es[0].isIntersecting ? start() : stop()), { rootMargin: "200px" }).observe(clip);
+        } else { start(); }
+      });
+    })();
+
     document.querySelectorAll(".value-card, .service-card, .testimonial-card").forEach((el) => {
       el.addEventListener("pointermove", (e) => {
         if (!window.matchMedia("(hover: hover) and (min-width: 981px)").matches) return;
