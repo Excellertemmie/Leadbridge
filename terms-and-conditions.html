@@ -1047,7 +1047,8 @@
     .brand-word em { color: var(--orange); font-style: italic; }
     @media (max-width: 640px) { .brand-word { font-size: 26px; } .brand-logo { width: 38px; height: 29px; } }
     /* mobile & touch refinements */
-    .nav { padding-left: max(5.5vw, env(safe-area-inset-left)); padding-right: max(5.5vw, env(safe-area-inset-right)); }
+    .nav { padding-left: max(22px, calc((100vw - var(--max)) / 2 + env(safe-area-inset-left, 0px))); padding-right: max(22px, calc((100vw - var(--max)) / 2 + env(safe-area-inset-right, 0px))); }
+    @media (max-width: 640px) { .nav { padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); } }
     .mobile-menu { overflow-y: auto; padding: 96px 24px 40px; align-content: center; justify-items: center; text-align: center; }
     @media (hover: none), (pointer: coarse) { .cursor-glow { display: none; } .stage:hover { transform: none; } .tilt { transform: none !important; } }
     @media (max-width: 640px) {
