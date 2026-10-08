@@ -274,9 +274,9 @@
       align-items: center;
       gap: 9px;
       min-height: 36px;
-      padding: 0 16px;
+      padding: 0 18px;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: 999px;
       background: rgba(255,255,255,.13);
       color: var(--white);
       font-size: 13px;
@@ -335,8 +335,9 @@
       max-width: 760px;
       margin: 24px auto 0;
       color: var(--soft);
-      font-size: clamp(16px, 2vw, 20px);
-      font-weight: 600;
+      font-size: clamp(16px, 1.5vw, 18px);
+      font-weight: 400;
+      line-height: 1.65;
       text-wrap: balance;
       opacity: 0;
       animation: fadeUp .8s ease forwards .9s;
@@ -1298,6 +1299,29 @@
       .values-grid > .value-card { min-height: 220px; background: linear-gradient(180deg, #1a1a1a, #0e0e0e); }
     }
 
+    /* ===== Round 3: uniform radius, titles on two lines, readable select, portfolio captions ===== */
+    .section-title + .section-copy { margin-top: 20px; }
+    .case-card, .portfolio-card { border-radius: 24px; }
+    .feature-tile, .industry-card { border-radius: 20px; }
+    .tag { border-radius: 999px; padding: 0 12px; }
+    .feature-art { border-radius: 14px; }
+    .project-image, .project-fact, .case-study-panel, .case-gallery figure, .ba-card, .impact-card { border-radius: 20px; }
+    .field select { color-scheme: dark; }
+    .field select option { background: #17110c; color: #fffaf2; }
+    .portfolio-info { inset: auto 14px 14px; padding: 18px 20px 20px; border-radius: 18px; background: rgba(8,8,8,.76); border: 1px solid rgba(255,255,255,.1); box-shadow: 0 18px 40px rgba(0,0,0,.45); -webkit-backdrop-filter: blur(16px) saturate(1.2); backdrop-filter: blur(16px) saturate(1.2); }
+    .portfolio-info h4 { font-size: 30px; margin-bottom: 6px; }
+    .portfolio-info p { color: var(--soft); font-size: 14px; line-height: 1.55; }
+    .portfolio-info .tag { margin-bottom: 10px; }
+    @media (min-width: 981px) {
+      .section-top > div:first-child, .industries-wrap > div:first-child, .faq-head, #about > .container { container-type: inline-size; }
+      :is(.section-top, .industries-wrap, .faq-head) .section-title, #about .about-title { white-space: nowrap; }
+      :is(.section-top, .industries-wrap, .faq-head) .section-title > span:not(.w), #about .about-title > span:not(.w) { display: block; }
+      @supports (width: 1cqw) {
+        :is(.section-top, .industries-wrap, .faq-head) .section-title { font-size: min(clamp(46px, 6vw, 82px), calc(100cqw / (var(--n, 19) * .44))); }
+        #about .about-title { font-size: min(clamp(40px, 5.2vw, 70px), calc(min(100cqw, 1080px) / (var(--n, 33) * .44))); }
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; filter: none; }
@@ -1347,9 +1371,9 @@
         <img src="https://framerusercontent.com/images/w8s17EhZCy1HskMXDn2rLsloPg.png" alt="" />
       </div>
       <div class="hero-inner">
-        <div class="eyebrow">Design &amp; CRO consultancy</div>
-        <h1 aria-label="Turn more of your visitors into paying customers.">
-          <span class="split-line no-break" style="--i:1">Turn more of your visitors</span>
+        <div class="eyebrow">Open to new projects</div>
+        <h1 aria-label="Turn your visitors into paying customers.">
+          <span class="split-line no-break" style="--i:1">Turn your visitors</span>
           <em class="split-line" style="--i:3">into paying customers.</em>
         </h1>
         <p class="hero-copy">I'm a design and conversion rate optimization (CRO) consultant. I find where your website loses visitors, then redesign and test the pages so more of them book, buy, or enquire.</p>
@@ -1372,7 +1396,7 @@
         <div class="section-top">
           <div>
             <p class="section-label reveal">Results</p>
-            <h2 class="section-title reveal">Delivering Tangible Results <span>That Propel Your Success</span></h2>
+            <h2 class="section-title reveal">Results That Propel <span>Your Success.</span></h2>
           </div>
           <p class="section-copy reveal">At the core of everything, I'm committed to outcomes that show up in traffic, conversion, sales, retention, and operational clarity.</p>
         </div>
@@ -1392,7 +1416,7 @@
     <section id="about">
       <div class="container">
         <p class="section-label reveal">About Leadbridge</p>
-        <h2 class="section-title about-title reveal">I give you revenue systems, aligned solutions, <span>and keep you growing for the long term.</span></h2>
+        <h2 class="section-title about-title reveal">I give you revenue systems, <span>aligned solutions, lasting growth.</span></h2>
         <p class="section-copy about-copy reveal">You get a website that converts instead of one that only looks good.</p>
         <div class="about-cols">
           <article class="about-col reveal" style="--d:0ms"><div class="mk-card"><div class="mk-win"><div class="mk-dots"><i></i><i></i><i></i></div><div class="mk-body"><p class="mk-eyebrow">Your funnel</p>
@@ -1415,7 +1439,7 @@
         <div class="section-top">
           <div>
             <p class="section-label reveal">How I Work</p>
-            <h2 class="section-title reveal">I Simplify The Journey <span>From Design To Launch.</span></h2>
+            <h2 class="section-title reveal">I Simplify The Path <span>To Launch.</span></h2>
           </div>
           <p class="section-copy reveal">Choosing the right partner can define the future of your business. I collaborate, innovate, and deliver with a clear process.</p>
         </div>
@@ -1437,7 +1461,7 @@
         <div class="section-top">
           <div>
             <p class="section-label reveal">Services</p>
-            <h2 class="section-title reveal">Design That Looks Right, <span>CRO That Makes It Pay.</span></h2>
+            <h2 class="section-title reveal">Design That Sells, <span>CRO That Pays.</span></h2>
           </div>
           <p class="section-copy reveal">Everything needed to turn your digital presence into a serious growth engine.</p>
         </div>
@@ -1455,12 +1479,8 @@
         <div class="industries-wrap">
           <div>
             <p class="section-label reveal">Industries I Serve</p>
-            <h2 class="section-title reveal">Accelerating Growth Across <span>Diverse Industries.</span></h2>
+            <h2 class="section-title reveal">Growth Across <span>Every Industry.</span></h2>
             <p class="section-copy reveal">If you can dream it, I can shape the system, story, and site that helps people trust it.</p>
-            <div class="hero-actions reveal" style="justify-content:flex-start">
-              <a class="btn btn-primary" href="#contact" data-book>Contact Me Now</a>
-              <a class="btn btn-secondary" href="#portfolio">View Portfolio</a>
-            </div>
           </div>
           <div class="industry-cloud reveal">
             <div class="industry-card"><div class="industry-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Z"/><path class="a" d="M9 8V7a3 3 0 0 1 6 0v1"/></svg></div><div>Ecommerce<span>Stores, product funnels, retention</span></div></div>
@@ -1509,7 +1529,7 @@
         <div class="section-top">
           <div>
             <p class="section-label reveal">Portfolio</p>
-            <h2 class="section-title reveal">Selected Projects <span>That Propel Your Website.</span></h2>
+            <h2 class="section-title reveal">Selected Work <span>That Performs.</span></h2>
           </div>
           <p class="section-copy reveal">A curated set of ecommerce, agency, and SaaS work shaped for clarity, trust, and measurable customer action.</p>
         </div>
@@ -1549,7 +1569,7 @@
         <div class="section-top">
           <div>
             <p class="section-label reveal">Testimonials</p>
-            <h2 class="section-title reveal">Customer Reviews About <span>Work, Usability and Design.</span></h2>
+            <h2 class="section-title reveal">Client Reviews <span>On Work &amp; Design.</span></h2>
           </div>
           <div>
             <p class="section-copy reveal">Realistic client voices for the kind of outcomes I aim to create.</p>
@@ -1602,14 +1622,14 @@
         <div class="section-top">
           <div>
             <p class="section-label reveal">Contact</p>
-            <h2 class="section-title reveal">Let's Build Something <span>Great Together.</span></h2>
+            <h2 class="section-title reveal">Let's Build <span>Something Great.</span></h2>
           </div>
           <p class="section-copy reveal">Tell me about the project, what success looks like, and the timeline you have in mind.</p>
         </div>
         <div class="contact-grid">
           <div class="contact-list reveal">
             <h3 class="col-title">Contact details</h3>
-            <a class="contact-card" href="mailto:temmie@leadbridge.com.ng"><div class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z"/><path class="a" d="m4.5 8 7.5 5.5L19.5 8"/></svg></div><div><small>Email</small><strong>temmie@leadbridge.com.ng</strong></div><svg class="contact-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+            <a class="contact-card" href="#contact" data-book><div class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/><path class="a" d="m15 10 6-3v10l-6-3"/></svg></div><div><small>Discovery call</small><strong>Book a 15-minute call</strong></div><svg class="contact-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
             <div class="contact-card"><div class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path class="a" d="M12 7.5V12l3 2"/></svg></div><div><small>Response time</small><strong>Within 24 hours</strong></div></div>
             <div class="contact-card"><div class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/><path d="M4 10.5h16M8 4v4M16 4v4"/><path class="a" d="m9.5 15 2 2 3.5-3.5"/></svg></div><div><small>Availability</small><strong><i class="status-dot"></i>Open to new projects</strong></div></div>
           
@@ -1733,6 +1753,9 @@
     document.querySelectorAll(".section-title").forEach((h) => {
       let i = 0;
       h.classList.add("split-title");
+      const sp = h.querySelector(":scope > span");
+      const first = [...h.childNodes].filter((n) => n.nodeType === 3).map((n) => n.textContent).join("").trim().length;
+      h.style.setProperty("--n", Math.max(first, sp ? sp.textContent.trim().length : 0, 10));
       (function walk(n) {
         [...n.childNodes].forEach((c) => {
           if (c.nodeType === 3) {
@@ -2155,7 +2178,7 @@
         note.textContent = "Thanks! I'll reply within 24 hours.";
         form.reset();
       } catch (err) {
-        note.textContent = "Sorry, that did not go through. Please email temmie@leadbridge.com.ng directly.";
+        note.textContent = "Sorry, that did not go through. Please try again, or book a discovery call instead.";
         note.style.color = "#ff9a3d";
         btn.innerHTML = label;
         btn.disabled = false;
